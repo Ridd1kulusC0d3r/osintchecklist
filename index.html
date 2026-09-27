@@ -13,7 +13,7 @@
     <div>
       <div class="brand-line">
         <p class="eyebrow">OSINT CHECKLIST</p>
-        <span class="version-badge">v0.2</span>
+        <span class="version-badge">v0.3</span>
       </div>
       <h1>Analyst Workbench</h1>
       <p id="subtitle" class="subtitle"></p>
@@ -111,6 +111,13 @@
 
     <section class="workspace">
       <div class="workspace-head">
+        <div class="mode-row">
+          <div class="mode-switch" role="group" aria-label="Workspace mode">
+            <button id="modeQuickBtn" class="mode-btn" type="button" data-mode="quick">Quick Log</button>
+            <button id="modeFullBtn" class="mode-btn active" type="button" data-mode="full">Full Workbench</button>
+          </div>
+          <p id="modeHint" class="small muted"></p>
+        </div>
         <div class="case-stats" id="caseStats"></div>
         <nav class="tabs" aria-label="Workbench sections">
           <button class="tab active" type="button" data-tab="checklist" id="tabChecklist">Checklist</button>
@@ -118,6 +125,7 @@
           <button class="tab" type="button" data-tab="entities" id="tabEntities">Entities & relationships</button>
           <button class="tab" type="button" data-tab="timeline" id="tabTimeline">Timeline</button>
           <button class="tab" type="button" data-tab="findings" id="tabFindings">Findings</button>
+          <button class="tab" type="button" data-tab="logbook" id="tabLogbook">Logbook</button>
         </nav>
       </div>
 
@@ -292,6 +300,29 @@
 
         <div id="findingList" class="record-list"></div>
       </section>
+
+      <section class="tab-panel" data-panel="logbook">
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">ACTIVITY LOG</p>
+            <h2 id="logbookHeading">Logbook</h2>
+            <p id="logbookIntro" class="muted"></p>
+          </div>
+          <button id="exportLogbookBtn" type="button">Export logbook</button>
+        </div>
+
+        <form id="logbookNoteForm" class="record-form compact">
+          <label>
+            <span id="logbookNoteLabel">Quick note</span>
+            <textarea id="logbookNote" rows="2"></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" id="addLogbookNoteBtn">Add note</button>
+          </div>
+        </form>
+
+        <div id="logbookList" class="timeline-list"></div>
+      </section>
     </section>
   </main>
 
@@ -318,7 +349,7 @@
   </dialog>
 
   <footer>
-    <span>OSINT Checklist // Analyst Workbench v0.2</span>
+    <span>OSINT Checklist // Analyst Workbench v0.3</span>
     <span id="footerCaveat"></span>
   </footer>
 
