@@ -1,5 +1,12 @@
 # Methodology
 
+## Decision-oriented expansion
+
+v0.3 organizes the checklist into five macro-stages: **Direction → Collection → Corroboration & Synthesis → Analysis & Decision → Delivery & Learning**. The central design goal is not checklist completion for its own sake. It is to reduce uncertainty until the analyst can justify whether to conclude, collect more, monitor, escalate or close inconclusively.
+
+See [Analyst Decision Flow](ANALYST-DECISION-FLOW.md), [Playbooks](PLAYBOOKS.md) and [Method References](METHOD-REFERENCES.md).
+
+
 The checklist is designed around a simple idea: **procedural completeness and analytic confidence are different things**.
 
 A completed task means a procedure was performed and documented. It does not mean an identity, attribution, allegation or hypothesis has been proven.
