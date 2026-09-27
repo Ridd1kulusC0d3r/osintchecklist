@@ -1,5 +1,9 @@
 # OSINT Checklist // Analyst Workbench
 
+**Interface languages:** 🇧🇷 Português (Brasil) · 🇺🇸 English · 🇪🇸 Español
+
+The interface auto-detects the browser language, allows manual switching, and keeps the language preference locally. Checklist content, task statuses, process insights, Markdown exports and printable/PDF reports are localized.
+
 A **local-first investigation checklist** for analysts who need a repeatable, auditable workflow for open-source research.
 
 The primary goal is deliberately boring and important: **help the analyst avoid skipping steps**.
@@ -86,7 +90,9 @@ The default checklist covers:
 │   ├── app.js
 │   └── styles.css
 ├── data/
-│   └── checklist.json
+│   ├── checklist.json
+│   ├── translations.en.json
+│   └── translations.es.json
 ├── docs/
 │   ├── METHODOLOGY.md
 │   └── PRIVACY.md
@@ -94,7 +100,7 @@ The default checklist covers:
 └── README.md
 ```
 
-The checklist content is separated from the application in `data/checklist.json`, so contributors can add or improve investigation procedures without rewriting the UI.
+The canonical checklist structure is kept in `data/checklist.json` (pt-BR). English and Spanish text overlays live in `data/translations.en.json` and `data/translations.es.json`. Stable task IDs keep case progress intact when the analyst changes languages.
 
 ## Methodological references
 
