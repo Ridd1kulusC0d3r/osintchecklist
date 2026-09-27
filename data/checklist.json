@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0-method-preview",
   "title": "OSINT Analyst Methodical Checklist",
   "statusValues": [
     "todo",
@@ -67,8 +67,36 @@
             "all"
           ],
           "core": false
+        },
+        {
+          "id": "intake-07",
+          "title": "Identificar o decisor e os stakeholders",
+          "description": "Registre quem tomará a decisão, quem consome o produto e quem pode esclarecer o requisito.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "intake-08",
+          "title": "Decompor o requisito em perguntas de inteligência",
+          "description": "Transforme a pergunta central em perguntas menores e verificáveis que orientem a coleta.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "intake-09",
+          "title": "Definir o limiar de decisão",
+          "description": "Registre quais descobertas mudariam materialmente a decisão, prioridade ou ação esperada.",
+          "tags": [
+            "all"
+          ],
+          "core": true
         }
-      ]
+      ],
+      "stage": "direction"
     },
     {
       "id": "scope",
@@ -129,8 +157,27 @@
             "all"
           ],
           "core": false
+        },
+        {
+          "id": "scope-07",
+          "title": "Definir limites entre coleta passiva e interação",
+          "description": "Documente se contato, autenticação, solicitação de informação ou outra interação é permitida no caso.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "scope-08",
+          "title": "Definir classificação, retenção e compartilhamento",
+          "description": "Estabeleça como dados do caso serão rotulados, armazenados, compartilhados e descartados.",
+          "tags": [
+            "all"
+          ],
+          "core": false
         }
-      ]
+      ],
+      "stage": "direction"
     },
     {
       "id": "opsec",
@@ -185,7 +232,8 @@
           ],
           "core": false
         }
-      ]
+      ],
+      "stage": "direction"
     },
     {
       "id": "baseline",
@@ -237,13 +285,113 @@
             "all"
           ],
           "core": false
+        },
+        {
+          "id": "baseline-06",
+          "title": "Atribuir IDs estáveis às entidades conhecidas",
+          "description": "Crie referências estáveis para pessoas, organizações, contas, domínios e outros objetos antes de correlacioná-los.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "baseline-07",
+          "title": "Listar pressupostos críticos iniciais",
+          "description": "Torne explícitos os pressupostos que, se estiverem errados, mudariam o caminho ou a conclusão da investigação.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ],
+      "stage": "direction"
+    },
+    {
+      "id": "plan",
+      "order": 5,
+      "stage": "direction",
+      "title": "05 · Plano de coleta e estratégia de pivôs",
+      "description": "Transforme perguntas em uma sequência de coleta priorizada antes de navegar sem direção.",
+      "items": [
+        {
+          "id": "plan-01",
+          "title": "Traduzir perguntas em requisitos de coleta",
+          "description": "Para cada pergunta de inteligência, defina quais dados observáveis poderiam respondê-la.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "plan-02",
+          "title": "Construir uma matriz de fontes",
+          "description": "Associe cada pergunta a fontes primárias, secundárias, oficiais, técnicas e históricas relevantes.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "plan-03",
+          "title": "Priorizar por ganho de informação, custo e risco",
+          "description": "Comece pelas fontes que podem reduzir mais incerteza com menor custo, exposição e tempo.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "plan-04",
+          "title": "Definir pivôs e ordem de exploração",
+          "description": "Planeje quais identificadores podem desbloquear novas fontes e em qual sequência serão testados.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "plan-05",
+          "title": "Registrar hipóteses concorrentes iniciais",
+          "description": "Mantenha mais de uma explicação plausível quando os fatos permitirem alternativas.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "plan-06",
+          "title": "Definir indicadores que sustentam ou enfraquecem hipóteses",
+          "description": "Liste sinais observáveis que ajudariam a diferenciar hipóteses concorrentes.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "plan-07",
+          "title": "Planejar variações de idioma, localidade e fuso",
+          "description": "Inclua transliterações, nomes locais, formatos de data e contexto regional quando relevantes.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "plan-08",
+          "title": "Definir regras de continuar, pivotar, escalar ou parar",
+          "description": "Determine antecipadamente quando uma linha será abandonada, aprofundada, escalada ou encerrada.",
+          "tags": [
+            "all"
+          ],
+          "core": true
         }
       ]
     },
     {
       "id": "search",
-      "order": 5,
-      "title": "05 · Descoberta web e estratégia de busca",
+      "order": 6,
+      "title": "06 · Descoberta web e estratégia de busca",
       "description": "Pesquise em camadas, registre consultas úteis e não dependa de um único mecanismo.",
       "items": [
         {
@@ -299,13 +447,41 @@
             "all"
           ],
           "core": true
+        },
+        {
+          "id": "search-07",
+          "title": "Diversificar mecanismos e tipos de fonte",
+          "description": "Evite depender de um único buscador, plataforma, índice ou classe de fonte.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "search-08",
+          "title": "Verificar atualidade e validade temporal",
+          "description": "Confirme se o dado ainda representa o período relevante ao requisito de inteligência.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "search-09",
+          "title": "Registrar limitações de ferramentas e consultas",
+          "description": "Anote cobertura, recência, falsos positivos, restrições regionais e outras limitações que afetem interpretação.",
+          "tags": [
+            "all"
+          ],
+          "core": false
         }
-      ]
+      ],
+      "stage": "collection"
     },
     {
       "id": "social",
-      "order": 6,
-      "title": "06 · Presença pública e SOCMINT",
+      "order": 7,
+      "title": "07 · Presença pública e SOCMINT",
       "description": "Mapeie presença e consistência sem assumir que contas parecidas pertencem à mesma entidade.",
       "items": [
         {
@@ -373,13 +549,32 @@
             "fraud"
           ],
           "core": false
+        },
+        {
+          "id": "social-07",
+          "title": "Registrar identificadores estáveis de plataforma",
+          "description": "Quando públicos e relevantes, registre IDs estáveis além do nome de usuário que pode mudar.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "social-08",
+          "title": "Construir cronologia básica das contas relevantes",
+          "description": "Compare criação, primeiras aparições, mudanças de nome, bio, links e outros marcos observáveis.",
+          "tags": [
+            "all"
+          ],
+          "core": false
         }
-      ]
+      ],
+      "stage": "collection"
     },
     {
       "id": "identifiers",
-      "order": 7,
-      "title": "07 · Pivôs de username e identificadores",
+      "order": 8,
+      "title": "08 · Pivôs de username e identificadores",
       "description": "Use identificadores como pivôs, não como provas automáticas de identidade.",
       "items": [
         {
@@ -423,13 +618,32 @@
             "fraud"
           ],
           "core": true
+        },
+        {
+          "id": "ident-05",
+          "title": "Avaliar colisão e frequência do identificador",
+          "description": "Considere se o username, nome, domínio ou outro identificador é comum o bastante para produzir falsos vínculos.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "ident-06",
+          "title": "Registrar a cadeia de pivôs",
+          "description": "Documente por que cada pivô levou ao próximo para que a correlação possa ser auditada e reproduzida.",
+          "tags": [
+            "all"
+          ],
+          "core": true
         }
-      ]
+      ],
+      "stage": "collection"
     },
     {
       "id": "contact",
-      "order": 8,
-      "title": "08 · Exposição de e-mail e telefone",
+      "order": 9,
+      "title": "09 · Exposição de e-mail e telefone",
       "description": "Verifique exposição pública de forma proporcional; não colete credenciais.",
       "items": [
         {
@@ -487,12 +701,13 @@
           ],
           "core": true
         }
-      ]
+      ],
+      "stage": "collection"
     },
     {
       "id": "org",
-      "order": 9,
-      "title": "09 · Organização e registros públicos",
+      "order": 10,
+      "title": "10 · Organização e registros públicos",
       "description": "Estruture fatos corporativos antes de inferir relações ou responsabilidades.",
       "items": [
         {
@@ -547,12 +762,13 @@
           ],
           "core": false
         }
-      ]
+      ],
+      "stage": "collection"
     },
     {
       "id": "infra",
-      "order": 10,
-      "title": "10 · Domínios e infraestrutura pública",
+      "order": 11,
+      "title": "11 · Domínios e infraestrutura pública",
       "description": "Para cyber OSINT, registre observações técnicas com timestamps e escopo.",
       "items": [
         {
@@ -617,12 +833,13 @@
           ],
           "core": true
         }
-      ]
+      ],
+      "stage": "collection"
     },
     {
       "id": "media",
-      "order": 11,
-      "title": "11 · Imagens, vídeos e documentos",
+      "order": 12,
+      "title": "12 · Imagens, vídeos e documentos",
       "description": "Verifique origem, contexto, cronologia e integridade aparente.",
       "items": [
         {
@@ -686,12 +903,13 @@
           ],
           "core": true
         }
-      ]
+      ],
+      "stage": "collection"
     },
     {
       "id": "geo",
-      "order": 12,
-      "title": "12 · GEOINT e verificação temporal",
+      "order": 13,
+      "title": "13 · GEOINT e verificação temporal",
       "description": "Geolocalização e cronolocalização exigem convergência de sinais.",
       "items": [
         {
@@ -738,12 +956,13 @@
           ],
           "core": true
         }
-      ]
+      ],
+      "stage": "collection"
     },
     {
       "id": "timeline",
-      "order": 13,
-      "title": "13 · Linha do tempo e relações",
+      "order": 14,
+      "title": "14 · Linha do tempo e relações",
       "description": "Organize eventos antes de explicar causalidade.",
       "items": [
         {
@@ -791,12 +1010,13 @@
           ],
           "core": true
         }
-      ]
+      ],
+      "stage": "synthesis"
     },
     {
       "id": "sources",
-      "order": 14,
-      "title": "14 · Avaliação de fontes e corroboracão",
+      "order": 15,
+      "title": "15 · Avaliação de fontes e corroboracão",
       "description": "A qualidade de um relatório raramente supera a qualidade das fontes que o sustentam.",
       "items": [
         {
@@ -843,13 +1063,50 @@
             "all"
           ],
           "core": true
+        },
+        {
+          "id": "src-06",
+          "title": "Testar independência entre fontes",
+          "description": "Verifique se fontes aparentemente distintas dependem do mesmo post, comunicado, dataset ou origem.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "src-07",
+          "title": "Avaliar acesso e proximidade da fonte",
+          "description": "Considere se a fonte tinha capacidade real de observar ou conhecer a informação reportada.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "src-08",
+          "title": "Avaliar incentivos e possíveis vieses",
+          "description": "Registre interesses, contexto e incentivos sem descartar uma fonte apenas por possível viés.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "src-09",
+          "title": "Avaliar recência da informação",
+          "description": "Confirme se a fonte e o dado são suficientemente atuais para a decisão ou reconstrução temporal.",
+          "tags": [
+            "all"
+          ],
+          "core": true
         }
-      ]
+      ],
+      "stage": "synthesis"
     },
     {
       "id": "evidence",
-      "order": 15,
-      "title": "15 · Preservação e registro de evidências",
+      "order": 16,
+      "title": "16 · Preservação e registro de evidências",
       "description": "Torne a coleta auditável e reproduzível dentro do necessário.",
       "items": [
         {
@@ -905,14 +1162,33 @@
             "all"
           ],
           "core": true
+        },
+        {
+          "id": "ev-07",
+          "title": "Distinguir evidência original de derivada",
+          "description": "Marque se o artefato é original, cópia, captura, transcrição, tradução, republicação ou transformação.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "ev-08",
+          "title": "Registrar método de obtenção e reprodutibilidade",
+          "description": "Explique como a evidência foi localizada ou capturada e quais passos outro analista precisaria repetir.",
+          "tags": [
+            "all"
+          ],
+          "core": true
         }
-      ]
+      ],
+      "stage": "synthesis"
     },
     {
       "id": "analysis",
-      "order": 16,
-      "title": "16 · Análise, alternativas e confiança",
-      "description": "É aqui que dados deixam de ser uma coleção de abas e viram uma avaliação defensável.",
+      "order": 17,
+      "title": "17 · Análise estruturada, alternativas e confiança",
+      "description": "Transforme dados em julgamentos testáveis, compare hipóteses e procure o que contradiz sua leitura.",
       "items": [
         {
           "id": "an-01",
@@ -976,13 +1252,131 @@
             "all"
           ],
           "core": true
+        },
+        {
+          "id": "an-08",
+          "title": "Executar checagem de pressupostos-chave",
+          "description": "Teste os pressupostos que sustentam os principais julgamentos e registre o impacto se estiverem errados.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-09",
+          "title": "Comparar evidências entre hipóteses concorrentes",
+          "description": "Organize o que sustenta, contradiz ou é neutro para cada hipótese plausível.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-10",
+          "title": "Buscar evidência desconfirmatória ativamente",
+          "description": "Faça buscas deliberadas por informação que enfraqueça a hipótese preferida.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-11",
+          "title": "Definir o que mudaria o julgamento",
+          "description": "Liste indicadores ou novas evidências que aumentariam, reduziriam ou inverteriam a avaliação atual.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-12",
+          "title": "Avaliar relevância para a decisão e implicações",
+          "description": "Conecte os achados ao requisito original e explique por que eles mudam, ou não, a decisão.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ],
+      "stage": "synthesis"
+    },
+    {
+      "id": "decision",
+      "order": 18,
+      "stage": "decision",
+      "title": "18 · Gate de decisão e suficiência analítica",
+      "description": "Pare de coletar por hábito e teste se a investigação já sustenta uma decisão defensável.",
+      "items": [
+        {
+          "id": "decision-01",
+          "title": "Responder explicitamente cada pergunta de inteligência",
+          "description": "Associe uma resposta, mesmo que seja inconclusiva, a cada pergunta definida no início.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "decision-02",
+          "title": "Classificar o estado de cada conclusão",
+          "description": "Diferencie sustentado, parcialmente sustentado, não sustentado e não resolvido.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "decision-03",
+          "title": "Avaliar se as lacunas ainda mudam a decisão",
+          "description": "Determine quais lacunas são materiais e quais podem permanecer sem impedir o uso do produto.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "decision-04",
+          "title": "Escolher a próxima ação do caso",
+          "description": "Decida entre encerrar, coletar mais, monitorar, solicitar apoio especializado ou escalar.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "decision-05",
+          "title": "Separar achados de recomendações",
+          "description": "Não apresente uma ação recomendada como se fosse um fato observado ou julgamento de atribuição.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "decision-06",
+          "title": "Definir gatilhos de reavaliação",
+          "description": "Registre quais novos eventos ou indicadores exigiriam reabrir ou revisar a avaliação.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "decision-07",
+          "title": "Calibrar confiança com qualidade, quantidade e lacunas",
+          "description": "Garanta que o nível de confiança reflita a sustentação real e não a convicção pessoal do analista.",
+          "tags": [
+            "all"
+          ],
+          "core": true
         }
       ]
     },
     {
       "id": "report",
-      "order": 17,
-      "title": "17 · Relatório, revisão e encerramento",
+      "order": 19,
+      "title": "19 · Relatório, revisão e encerramento",
       "description": "O produto final deve ser útil, rastreável e proporcional à pergunta inicial.",
       "items": [
         {
@@ -1052,6 +1446,88 @@
           "id": "rep-08",
           "title": "Aplicar retenção e descarte adequados",
           "description": "Mantenha apenas o necessário conforme política e obrigação aplicável.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "rep-09",
+          "title": "Explicar mudança ou continuidade do julgamento",
+          "description": "Quando houver análise anterior, indique o que mudou, o que permaneceu e qual nova evidência causou a revisão.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "rep-10",
+          "title": "Incluir evidência favorável e contrária material",
+          "description": "Não apresente apenas os dados que sustentam a narrativa principal; exponha contradições relevantes.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ],
+      "stage": "decision"
+    },
+    {
+      "id": "closure",
+      "order": 20,
+      "stage": "closure",
+      "title": "20 · Pós-caso, aprendizado e monitoramento",
+      "description": "Encerre de modo reproduzível e transforme o que funcionou, ou falhou, em melhoria de método.",
+      "items": [
+        {
+          "id": "closure-01",
+          "title": "Registrar lições aprendidas",
+          "description": "Documente quais abordagens economizaram tempo, quais falharam e por quê.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "closure-02",
+          "title": "Atualizar limitações de fontes e ferramentas",
+          "description": "Registre mudanças, restrições, falsos positivos e cobertura observados durante o caso.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "closure-03",
+          "title": "Definir monitoramento ou justificar sua ausência",
+          "description": "Se houver risco residual, estabeleça gatilhos e frequência; caso contrário, registre por que monitorar não agrega valor.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "closure-04",
+          "title": "Validar reprodutibilidade dos artefatos críticos",
+          "description": "Confirme que outro analista consegue entender a origem, o caminho e a sustentação dos achados principais.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "closure-05",
+          "title": "Aplicar arquivamento e descarte previstos",
+          "description": "Execute as regras de retenção, acesso e descarte definidas para o caso.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "closure-06",
+          "title": "Revisar o resultado contra a pergunta e a decisão originais",
+          "description": "Cheque se o produto final respondeu o problema que justificou a investigação em vez de apenas produzir dados interessantes.",
           "tags": [
             "all"
           ],
