@@ -1,0 +1,1063 @@
+{
+  "version": "0.1.0",
+  "title": "OSINT Analyst Methodical Checklist",
+  "statusValues": [
+    "todo",
+    "doing",
+    "done",
+    "na"
+  ],
+  "phases": [
+    {
+      "id": "intake",
+      "order": 1,
+      "title": "01 · Intake e pergunta de inteligência",
+      "description": "Defina o problema antes de abrir vinte abas e chamar isso de investigação.",
+      "items": [
+        {
+          "id": "intake-01",
+          "title": "Definir a pergunta central",
+          "description": "Formule uma pergunta específica que possa ser respondida com evidências observáveis.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "intake-02",
+          "title": "Definir a decisão a ser apoiada",
+          "description": "Registre para que o resultado será usado e por quem.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "intake-03",
+          "title": "Registrar contexto conhecido",
+          "description": "Separe fatos fornecidos, alegações, pressupostos e lacunas iniciais.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "intake-04",
+          "title": "Definir urgência e prazo",
+          "description": "Determine timebox e prioridade antes da coleta.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "intake-05",
+          "title": "Definir critérios de encerramento",
+          "description": "Estabeleça quando a investigação estará suficientemente respondida.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "intake-06",
+          "title": "Definir entregável e público",
+          "description": "Ex.: nota analítica, briefing executivo, relatório técnico ou registro de verificação.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "order": 2,
+      "title": "02 · Escopo, legalidade e minimização",
+      "description": "Delimite o que pode, deve e não deve ser coletado.",
+      "items": [
+        {
+          "id": "scope-01",
+          "title": "Definir período e geografia",
+          "description": "Registre janela temporal, idiomas, países ou regiões relevantes.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "scope-02",
+          "title": "Definir fontes permitidas",
+          "description": "Liste categorias de fontes públicas e restrições aplicáveis.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "scope-03",
+          "title": "Confirmar base e autorização da atividade",
+          "description": "Verifique mandato, regras internas e requisitos legais aplicáveis.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "scope-04",
+          "title": "Aplicar minimização de dados",
+          "description": "Colete somente o necessário para responder à pergunta.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "scope-05",
+          "title": "Definir dados que não devem ser registrados",
+          "description": "Evite credenciais, segredos e PII irrelevante ou excessiva.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "scope-06",
+          "title": "Identificar riscos de contato ou impacto",
+          "description": "Planeje coleta passiva quando interação não for necessária ou autorizada.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        }
+      ]
+    },
+    {
+      "id": "opsec",
+      "order": 3,
+      "title": "03 · OPSEC e ambiente de coleta",
+      "description": "Proteja o caso, as fontes e o próprio processo analítico.",
+      "items": [
+        {
+          "id": "opsec-01",
+          "title": "Usar ambiente de pesquisa dedicado",
+          "description": "Separe a atividade investigativa da navegação e contas pessoais.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "opsec-02",
+          "title": "Revisar exposição do navegador e sessão",
+          "description": "Evite autenticação pessoal, preenchimento automático e sincronizações desnecessárias.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "opsec-03",
+          "title": "Definir estratégia de arquivamento",
+          "description": "Prepare convenção de nomes, timestamps e local seguro para evidências.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "opsec-04",
+          "title": "Registrar ferramentas utilizadas",
+          "description": "Anote ferramenta, versão ou serviço e limitações relevantes.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "opsec-05",
+          "title": "Evitar interação desnecessária com o objeto",
+          "description": "Não curtir, seguir, contactar ou alterar o ambiente salvo quando isso fizer parte do método autorizado.",
+          "tags": [
+            "person",
+            "fraud",
+            "media"
+          ],
+          "core": false
+        }
+      ]
+    },
+    {
+      "id": "baseline",
+      "order": 4,
+      "title": "04 · Baseline: fatos, entidades e identificadores",
+      "description": "Construa o ponto de partida sem confundir coincidência com identidade.",
+      "items": [
+        {
+          "id": "baseline-01",
+          "title": "Registrar entidades conhecidas",
+          "description": "Use aliases ou referências internas sempre que possível.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "baseline-02",
+          "title": "Registrar identificadores conhecidos",
+          "description": "Usernames, domínios, e-mails corporativos, telefones corporativos, IDs públicos ou outros pivôs autorizados.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "baseline-03",
+          "title": "Criar lista de variações",
+          "description": "Considere grafias, aliases, transliterações, marcas, nomes anteriores e padrões de username.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "baseline-04",
+          "title": "Separar fato, alegação e hipótese",
+          "description": "Rotule explicitamente cada tipo antes de iniciar pivôs.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "baseline-05",
+          "title": "Criar perguntas secundárias",
+          "description": "Que informações faltantes mudariam materialmente a conclusão?",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "order": 5,
+      "title": "05 · Descoberta web e estratégia de busca",
+      "description": "Pesquise em camadas, registre consultas úteis e não dependa de um único mecanismo.",
+      "items": [
+        {
+          "id": "search-01",
+          "title": "Executar busca exata pelos identificadores",
+          "description": "Comece com combinações precisas e documente resultados relevantes.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "search-02",
+          "title": "Executar buscas por variações e contexto",
+          "description": "Combine aliases, organização, local, data, evento ou tópico relevante.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "search-03",
+          "title": "Pesquisar versões arquivadas",
+          "description": "Verifique histórico de páginas ou documentos quando mudança temporal for relevante.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "search-04",
+          "title": "Pesquisar documentos e arquivos públicos",
+          "description": "Procure apresentações, PDFs, planilhas, press releases ou materiais oficiais relevantes.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "search-05",
+          "title": "Registrar consultas de alto valor",
+          "description": "Mantenha as queries que produziram evidência ou que precisam ser repetidas.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "search-06",
+          "title": "Registrar resultados negativos relevantes",
+          "description": "Ausência também pode limitar hipóteses, desde que não seja tratada como prova absoluta.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "social",
+      "order": 6,
+      "title": "06 · Presença pública e SOCMINT",
+      "description": "Mapeie presença e consistência sem assumir que contas parecidas pertencem à mesma entidade.",
+      "items": [
+        {
+          "id": "social-01",
+          "title": "Mapear perfis oficiais ou declarados",
+          "description": "Registre URL, identificador estável, data da observação e fonte de confirmação.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": true
+        },
+        {
+          "id": "social-02",
+          "title": "Pesquisar perfis candidatos ou imitadores",
+          "description": "Classifique como candidato, provável imitação ou confirmado somente quando houver base suficiente.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "social-03",
+          "title": "Comparar biografia, avatar e links",
+          "description": "Use consistência entre atributos apenas como sinais, não como identificação isolada.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "social-04",
+          "title": "Revisar histórico público de publicações",
+          "description": "Observe temas, datas, mudanças e referências cruzadas relevantes ao caso.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "social-05",
+          "title": "Mapear relações publicamente observáveis",
+          "description": "Diferencie interação, associação declarada e inferência de relacionamento.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "social-06",
+          "title": "Registrar lacunas por plataforma",
+          "description": "Ausência em uma plataforma não significa ausência de identidade digital.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        }
+      ]
+    },
+    {
+      "id": "identifiers",
+      "order": 7,
+      "title": "07 · Pivôs de username e identificadores",
+      "description": "Use identificadores como pivôs, não como provas automáticas de identidade.",
+      "items": [
+        {
+          "id": "ident-01",
+          "title": "Pesquisar reutilização de username",
+          "description": "Registre somente correspondências relevantes e verificáveis.",
+          "tags": [
+            "person",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "ident-02",
+          "title": "Comparar atributos entre contas candidatas",
+          "description": "Datas, links, idioma, temas, imagens e referências mútuas podem aumentar ou reduzir plausibilidade.",
+          "tags": [
+            "person",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "ident-03",
+          "title": "Buscar referências cruzadas explícitas",
+          "description": "Priorize links ou declarações que conectem diretamente dois identificadores.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": true
+        },
+        {
+          "id": "ident-04",
+          "title": "Registrar colisões e homônimos",
+          "description": "Documente contas que parecem semelhantes mas possuem sinais conflitantes.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "order": 8,
+      "title": "08 · Exposição de e-mail e telefone",
+      "description": "Verifique exposição pública de forma proporcional; não colete credenciais.",
+      "items": [
+        {
+          "id": "contact-01",
+          "title": "Verificar referências públicas a e-mails autorizados",
+          "description": "Registre contexto e fonte, não apenas a ocorrência.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud",
+            "cyber"
+          ],
+          "core": false
+        },
+        {
+          "id": "contact-02",
+          "title": "Verificar indicadores de exposição em serviços legítimos",
+          "description": "Use serviços de notificação/consulta permitidos e registre somente metadados necessários.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud",
+            "cyber"
+          ],
+          "core": false
+        },
+        {
+          "id": "contact-03",
+          "title": "Não armazenar senhas ou segredos encontrados",
+          "description": "Registre apenas que houve exposição e trate o material sensível conforme política aplicável.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "contact-04",
+          "title": "Verificar referências públicas a números autorizados",
+          "description": "Registre origem, data e contexto da exposição sem ampliar desnecessariamente PII.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "contact-05",
+          "title": "Corroborar associação antes de atribuir",
+          "description": "Número ou e-mail compartilhado, reciclado ou publicado por terceiros pode induzir erro.",
+          "tags": [
+            "person",
+            "organization",
+            "fraud"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "org",
+      "order": 9,
+      "title": "09 · Organização e registros públicos",
+      "description": "Estruture fatos corporativos antes de inferir relações ou responsabilidades.",
+      "items": [
+        {
+          "id": "org-01",
+          "title": "Confirmar identidade jurídica ou institucional",
+          "description": "Nome legal, nome comercial, jurisdição e registros oficiais quando disponíveis.",
+          "tags": [
+            "organization",
+            "fraud",
+            "cyber"
+          ],
+          "core": true
+        },
+        {
+          "id": "org-02",
+          "title": "Mapear presença oficial",
+          "description": "Website, perfis institucionais, comunicados e canais oficiais.",
+          "tags": [
+            "organization",
+            "fraud",
+            "cyber"
+          ],
+          "core": true
+        },
+        {
+          "id": "org-03",
+          "title": "Verificar mudanças históricas relevantes",
+          "description": "Razão social, domínio, liderança, endereços institucionais ou outros fatos públicos pertinentes.",
+          "tags": [
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "org-04",
+          "title": "Mapear relações corporativas declaradas",
+          "description": "Subsidiárias, controladoras, parceiros ou fornecedores apenas quando sustentados por fontes.",
+          "tags": [
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "org-05",
+          "title": "Revisar registros regulatórios ou judiciais relevantes",
+          "description": "Use fontes públicas oficiais e respeite o escopo da investigação.",
+          "tags": [
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        }
+      ]
+    },
+    {
+      "id": "infra",
+      "order": 10,
+      "title": "10 · Domínios e infraestrutura pública",
+      "description": "Para cyber OSINT, registre observações técnicas com timestamps e escopo.",
+      "items": [
+        {
+          "id": "infra-01",
+          "title": "Confirmar domínio e propriedade declarada",
+          "description": "Correlacione site oficial, registros e documentação pública.",
+          "tags": [
+            "cyber",
+            "organization",
+            "fraud"
+          ],
+          "core": true
+        },
+        {
+          "id": "infra-02",
+          "title": "Registrar DNS público relevante",
+          "description": "Documente registros pertinentes ao caso com data e fonte.",
+          "tags": [
+            "cyber",
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "infra-03",
+          "title": "Revisar certificados e subdomínios publicamente observáveis",
+          "description": "Use dados públicos para mapear relações de infraestrutura, evitando inferir controle sem corroborar.",
+          "tags": [
+            "cyber",
+            "organization",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "infra-04",
+          "title": "Verificar histórico público de domínio",
+          "description": "Mudanças de conteúdo, resolução ou certificados podem ser temporalmente relevantes.",
+          "tags": [
+            "cyber",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "infra-05",
+          "title": "Registrar serviços expostos somente de fontes passivas/autorizadas",
+          "description": "Não transforme uma investigação OSINT em varredura intrusiva.",
+          "tags": [
+            "cyber"
+          ],
+          "core": true
+        },
+        {
+          "id": "infra-06",
+          "title": "Separar co-hospedagem de controle comum",
+          "description": "Infraestrutura compartilhada não prova automaticamente relação entre entidades.",
+          "tags": [
+            "cyber",
+            "fraud"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "order": 11,
+      "title": "11 · Imagens, vídeos e documentos",
+      "description": "Verifique origem, contexto, cronologia e integridade aparente.",
+      "items": [
+        {
+          "id": "media-01",
+          "title": "Preservar o arquivo ou referência original quando permitido",
+          "description": "Registre URL, timestamp e contexto da obtenção.",
+          "tags": [
+            "media",
+            "person",
+            "fraud"
+          ],
+          "core": true
+        },
+        {
+          "id": "media-02",
+          "title": "Executar busca reversa de imagem",
+          "description": "Procure ocorrências anteriores e versões relacionadas.",
+          "tags": [
+            "media",
+            "person",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "media-03",
+          "title": "Examinar metadados disponíveis",
+          "description": "Trate metadados como sinal que pode estar ausente, alterado ou incorreto.",
+          "tags": [
+            "media",
+            "fraud",
+            "cyber"
+          ],
+          "core": false
+        },
+        {
+          "id": "media-04",
+          "title": "Verificar conteúdo visual e contexto",
+          "description": "Compare cenário, placas, arquitetura, clima, sombras, idioma e outros elementos relevantes.",
+          "tags": [
+            "media"
+          ],
+          "core": true
+        },
+        {
+          "id": "media-05",
+          "title": "Verificar cronologia de publicação",
+          "description": "Identifique publicação mais antiga encontrada sem assumir que ela seja a origem absoluta.",
+          "tags": [
+            "media",
+            "fraud"
+          ],
+          "core": true
+        },
+        {
+          "id": "media-06",
+          "title": "Registrar limitações da verificação",
+          "description": "Explique o que não pôde ser autenticado ou atribuído.",
+          "tags": [
+            "media"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "geo",
+      "order": 12,
+      "title": "12 · GEOINT e verificação temporal",
+      "description": "Geolocalização e cronolocalização exigem convergência de sinais.",
+      "items": [
+        {
+          "id": "geo-01",
+          "title": "Listar indicadores geográficos observáveis",
+          "description": "Texto, paisagem, infraestrutura, transporte, arquitetura ou referências locais.",
+          "tags": [
+            "media",
+            "person",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "geo-02",
+          "title": "Comparar indicadores com fontes independentes",
+          "description": "Busque confirmação por mapas, imagens históricas ou fontes oficiais públicas.",
+          "tags": [
+            "media",
+            "person",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "geo-03",
+          "title": "Verificar consistência temporal",
+          "description": "Clima, eventos, horários, versões de páginas e outras pistas devem ser compatíveis.",
+          "tags": [
+            "media",
+            "person",
+            "fraud"
+          ],
+          "core": false
+        },
+        {
+          "id": "geo-04",
+          "title": "Declarar nível de precisão",
+          "description": "Diferencie país, cidade, área e local específico; não exagere a resolução da evidência.",
+          "tags": [
+            "media",
+            "person",
+            "fraud"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "timeline",
+      "order": 13,
+      "title": "13 · Linha do tempo e relações",
+      "description": "Organize eventos antes de explicar causalidade.",
+      "items": [
+        {
+          "id": "time-01",
+          "title": "Criar linha do tempo dos eventos relevantes",
+          "description": "Inclua fonte, timestamp, fuso horário e nível de certeza quando necessário.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "time-02",
+          "title": "Normalizar datas e fusos",
+          "description": "Evite conclusões erradas causadas por timezone, republicação ou captura tardia.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "time-03",
+          "title": "Mapear relações com tipo explícito",
+          "description": "Ex.: declarado por, linka para, compartilha infraestrutura, interage com, emprega.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "time-04",
+          "title": "Distinguir correlação de causalidade",
+          "description": "Eventos próximos no tempo ou no grafo não provam relação causal.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "time-05",
+          "title": "Registrar eventos contraditórios",
+          "description": "Conflitos são dados úteis; não os esconda para salvar a narrativa.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "14 · Avaliação de fontes e corroboracão",
+      "description": "A qualidade de um relatório raramente supera a qualidade das fontes que o sustentam.",
+      "items": [
+        {
+          "id": "src-01",
+          "title": "Avaliar origem e proximidade da fonte",
+          "description": "Diferencie fonte primária, derivada, republicação e agregador.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "src-02",
+          "title": "Avaliar credibilidade e limitações",
+          "description": "Considere histórico, acesso, interesse, possíveis vieses e método de obtenção.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "src-03",
+          "title": "Corroborar julgamentos importantes",
+          "description": "Busque fontes independentes ou evidências complementares.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "src-04",
+          "title": "Distinguir múltiplas fontes de múltiplas cópias",
+          "description": "Cinco matérias copiando a mesma origem continuam sendo uma cadeia informacional.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "src-05",
+          "title": "Registrar fonte que contradiz a hipótese",
+          "description": "A análise deve sobreviver à evidência inconveniente.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "evidence",
+      "order": 15,
+      "title": "15 · Preservação e registro de evidências",
+      "description": "Torne a coleta auditável e reproduzível dentro do necessário.",
+      "items": [
+        {
+          "id": "ev-01",
+          "title": "Registrar URL/fonte e timestamp",
+          "description": "Toda evidência material deve apontar para sua origem e momento de observação.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "ev-02",
+          "title": "Preservar cópia ou captura quando apropriado",
+          "description": "Use método proporcional ao caso e às regras aplicáveis.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "ev-03",
+          "title": "Registrar contexto da captura",
+          "description": "Explique o que estava sendo observado e por que é relevante.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "ev-04",
+          "title": "Gerar hash para arquivos relevantes",
+          "description": "Quando integridade for importante, registre hash e método utilizado.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "ev-05",
+          "title": "Manter convenção consistente de evidências",
+          "description": "IDs, nomes de arquivo, datas e referências devem ser fáceis de auditar.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "ev-06",
+          "title": "Evitar replicar conteúdo sensível desnecessário",
+          "description": "Preserve o mínimo necessário e aplique controles de acesso apropriados.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "analysis",
+      "order": 16,
+      "title": "16 · Análise, alternativas e confiança",
+      "description": "É aqui que dados deixam de ser uma coleção de abas e viram uma avaliação defensável.",
+      "items": [
+        {
+          "id": "an-01",
+          "title": "Listar julgamentos-chave",
+          "description": "Escreva as principais conclusões em frases testáveis e específicas.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-02",
+          "title": "Vincular cada julgamento às evidências",
+          "description": "Nenhuma conclusão material deve flutuar sem fonte ou raciocínio explícito.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-03",
+          "title": "Separar observação de inferência",
+          "description": "Use linguagem que deixe claro o que foi visto e o que foi interpretado.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-04",
+          "title": "Considerar hipóteses alternativas",
+          "description": "Explique pelo menos uma alternativa plausível quando houver incerteza material.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-05",
+          "title": "Atribuir confiança aos julgamentos",
+          "description": "Baixa, moderada ou alta, acompanhada da razão e das limitações.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "an-06",
+          "title": "Revisar vieses e pressupostos",
+          "description": "Cheque confirmação, disponibilidade, ancoragem e narrativa excessivamente coerente.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "an-07",
+          "title": "Identificar lacunas de inteligência",
+          "description": "Liste perguntas não respondidas que ainda importam para a decisão.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "order": 17,
+      "title": "17 · Relatório, revisão e encerramento",
+      "description": "O produto final deve ser útil, rastreável e proporcional à pergunta inicial.",
+      "items": [
+        {
+          "id": "rep-01",
+          "title": "Escrever resumo executivo / BLUF",
+          "description": "Comece pela resposta, impacto e nível de confiança.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "rep-02",
+          "title": "Documentar metodologia e escopo",
+          "description": "Explique fontes, período, limitações e exclusões relevantes.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "rep-03",
+          "title": "Apresentar achados com referências",
+          "description": "Cada achado material deve permitir rastreio até a evidência.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "rep-04",
+          "title": "Declarar limitações e incertezas",
+          "description": "Não enterre caveats depois de quarenta páginas de confiança performática.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "rep-05",
+          "title": "Revisar linguagem e atribuições",
+          "description": "Remova afirmações mais fortes do que a evidência suporta.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        },
+        {
+          "id": "rep-06",
+          "title": "Executar revisão por outro analista quando possível",
+          "description": "Peça revisão de evidência, lógica e clareza, não apenas ortografia.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "rep-07",
+          "title": "Registrar pendências e próximos passos",
+          "description": "Documente lacunas, monitoramento necessário e ações recomendadas.",
+          "tags": [
+            "all"
+          ],
+          "core": false
+        },
+        {
+          "id": "rep-08",
+          "title": "Aplicar retenção e descarte adequados",
+          "description": "Mantenha apenas o necessário conforme política e obrigação aplicável.",
+          "tags": [
+            "all"
+          ],
+          "core": true
+        }
+      ]
+    }
+  ]
+}
