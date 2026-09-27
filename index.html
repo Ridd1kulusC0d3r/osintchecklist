@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Checklist metodológico e local-first para investigações OSINT.">
+  <meta name="description" content="A local-first methodological checklist for OSINT investigations.">
   <title>OSINT Checklist // Analyst Workbench</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
@@ -12,10 +12,20 @@
     <div>
       <p class="eyebrow">OSINT CHECKLIST</p>
       <h1>Analyst Workbench</h1>
-      <p class="subtitle">Checklist metodológico, rastreável e local-first para investigações em fontes abertas.</p>
+      <p id="subtitle" class="subtitle">A traceable, local-first methodological checklist for open-source investigations.</p>
     </div>
-    <div class="privacy-pill" title="O conteúdo do caso fica no armazenamento local deste navegador.">
-      LOCAL-FIRST
+    <div class="topbar-actions">
+      <label class="language-control">
+        <span id="languageLabel">Language</span>
+        <select id="languageSelect" aria-label="Language">
+          <option value="pt-BR">Português (Brasil)</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </label>
+      <div id="privacyPill" class="privacy-pill" title="Case content stays in this browser's local storage.">
+        LOCAL-FIRST
+      </div>
     </div>
   </header>
 
@@ -23,84 +33,70 @@
     <aside class="sidebar">
       <section class="panel">
         <div class="section-heading">
-          <h2>Caso</h2>
-          <button id="resetBtn" class="ghost danger" type="button">Limpar</button>
+          <h2 id="caseHeading">Case</h2>
+          <button id="resetBtn" class="ghost danger" type="button">Reset</button>
         </div>
 
         <label>
-          Referência do caso
+          <span id="caseRefLabel">Case reference</span>
           <input id="caseRef" type="text" placeholder="CASE-2026-001" autocomplete="off">
         </label>
 
         <label>
-          Perfil de investigação
-          <select id="profile">
-            <option value="all">OSINT geral</option>
-            <option value="person">Pessoa / entidade</option>
-            <option value="organization">Organização</option>
-            <option value="cyber">Cyber / infraestrutura</option>
-            <option value="fraud">Fraude / golpe</option>
-            <option value="media">Verificação de mídia</option>
-          </select>
+          <span id="profileLabel">Investigation profile</span>
+          <select id="profile"></select>
         </label>
 
         <label>
-          Objetivo / intelligence requirement
-          <textarea id="objective" rows="4" placeholder="Qual pergunta precisa ser respondida e qual decisão será apoiada?"></textarea>
+          <span id="objectiveLabel">Objective / intelligence requirement</span>
+          <textarea id="objective" rows="4"></textarea>
         </label>
 
         <label>
-          Escopo
-          <textarea id="scope" rows="3" placeholder="Período, região, fontes permitidas, limites e critérios de encerramento."></textarea>
+          <span id="scopeLabel">Scope</span>
+          <textarea id="scope" rows="3"></textarea>
         </label>
 
         <div class="grid-2">
           <label>
-            Urgência
-            <select id="urgency">
-              <option value="normal">Normal</option>
-              <option value="high">Alta</option>
-              <option value="critical">Crítica</option>
-            </select>
+            <span id="urgencyLabel">Urgency</span>
+            <select id="urgency"></select>
           </label>
           <label>
-            Analista
-            <input id="analyst" type="text" placeholder="Alias ou equipe" autocomplete="off">
+            <span id="analystLabel">Analyst</span>
+            <input id="analyst" type="text" autocomplete="off">
           </label>
         </div>
 
         <label>
-          Contexto resumido
-          <textarea id="context" rows="4" placeholder="Registre somente o necessário. Prefira aliases e referências internas."></textarea>
+          <span id="contextLabel">Context summary</span>
+          <textarea id="context" rows="4"></textarea>
         </label>
 
-        <div class="notice">
-          <strong>Minimização por padrão.</strong>
-          Evite PII desnecessária, credenciais, segredos ou dados que você não esteja autorizado a tratar.
-        </div>
+        <div id="privacyNotice" class="notice"></div>
       </section>
 
       <section class="panel">
-        <h2>Progresso</h2>
+        <h2 id="progressHeading">Progress</h2>
         <div class="progress-wrap">
           <div class="progress-track"><div id="overallBar" class="progress-bar"></div></div>
           <div class="progress-stats">
             <strong id="overallPct">0%</strong>
-            <span id="overallCount">0 / 0 aplicáveis</span>
+            <span id="overallCount">0 / 0</span>
           </div>
         </div>
         <div id="phaseProgress" class="phase-progress"></div>
       </section>
 
       <section class="panel">
-        <h2>Exportar</h2>
+        <h2 id="exportHeading">Export</h2>
         <div class="button-stack">
-          <button id="exportJsonBtn" type="button">Exportar estado JSON</button>
-          <button id="exportMdBtn" type="button">Exportar relatório Markdown</button>
-          <button id="printBtn" type="button">Imprimir / salvar PDF</button>
-          <button id="insightsBtn" class="secondary" type="button">Insights de processo</button>
+          <button id="exportJsonBtn" type="button">Export JSON state</button>
+          <button id="exportMdBtn" type="button">Export Markdown report</button>
+          <button id="printBtn" type="button">Print / save PDF</button>
+          <button id="insightsBtn" class="secondary" type="button">Process insights</button>
         </div>
-        <p class="small muted">O resumo é derivado somente do que foi preenchido neste navegador.</p>
+        <p id="exportHint" class="small muted"></p>
       </section>
     </aside>
 
@@ -108,27 +104,21 @@
       <div class="workspace-toolbar">
         <div>
           <p class="eyebrow">INVESTIGATION FLOW</p>
-          <h2>Checklist</h2>
+          <h2 id="checklistHeading">Checklist</h2>
         </div>
         <div class="toolbar-actions">
           <label class="search-label">
-            <span class="sr-only">Filtrar checklist</span>
-            <input id="search" type="search" placeholder="Filtrar tarefas...">
+            <span id="searchSr" class="sr-only">Filter checklist</span>
+            <input id="search" type="search">
           </label>
-          <select id="statusFilter" aria-label="Filtrar por status">
-            <option value="all">Todos os status</option>
-            <option value="todo">Não iniciado</option>
-            <option value="doing">Em andamento</option>
-            <option value="done">Concluído</option>
-            <option value="na">Não aplicável</option>
-          </select>
+          <select id="statusFilter" aria-label="Status filter"></select>
         </div>
       </div>
 
       <div class="legend">
-        <span><i class="dot core"></i> Etapa núcleo</span>
-        <span><i class="dot scenario"></i> Etapa contextual</span>
-        <span>✓ marcar execução ≠ confirmar hipótese</span>
+        <span><i class="dot core"></i> <span id="legendCore">Core step</span></span>
+        <span><i class="dot scenario"></i> <span id="legendContext">Contextual step</span></span>
+        <span id="legendCaveat">✓ execution recorded ≠ hypothesis confirmed</span>
       </div>
 
       <div id="checklist" class="checklist" aria-live="polite"></div>
@@ -139,16 +129,16 @@
     <div class="dialog-head">
       <div>
         <p class="eyebrow">PROCESS REVIEW</p>
-        <h2>Insights de processo</h2>
+        <h2 id="insightsHeading">Process insights</h2>
       </div>
-      <button id="closeInsightsBtn" class="ghost" type="button">Fechar</button>
+      <button id="closeInsightsBtn" class="ghost" type="button">Close</button>
     </div>
     <div id="insightsContent"></div>
   </dialog>
 
   <footer>
     <span>OSINT Checklist // Analyst Workbench</span>
-    <span>Checklist não substitui julgamento analítico, revisão legal ou validação de evidências.</span>
+    <span id="footerCaveat"></span>
   </footer>
 
   <script src="assets/app.js" defer></script>
