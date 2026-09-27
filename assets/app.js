@@ -279,8 +279,9 @@ function escapeHtml(value=""){
   return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
 function detectLanguage(){
+  const supported=["pt-BR","en","es"];
   const saved=localStorage.getItem(LANG_KEY);
-  if(saved && I18N[saved]) return saved;
+  if(saved && supported.includes(saved)) return saved;
   const browser=(navigator.language||"en").toLowerCase();
   if(browser.startsWith("pt")) return "pt-BR";
   if(browser.startsWith("es")) return "es";
