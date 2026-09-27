@@ -43,11 +43,17 @@ A checked box means that a procedure was performed. It does not mean the hypothe
 
 This repository is intentionally deployable as a static site.
 
-1. Open `index.html` locally, or serve the repository with any static web server.
-2. For GitHub Pages, configure **Settings → Pages → Deploy from branch → main / root**.
+1. For GitHub Pages, configure **Settings → Pages → Deploy from branch → main / root**.
+2. For local use, run a small static server from the repository, for example:
+   ```bash
+   python3 -m http.server 8000
+   ```
+   Then open `http://localhost:8000`.
 3. Start a case, select the investigation profile, and work through the phases.
 4. Export JSON periodically as a case backup.
 5. Export Markdown or use **Print / PDF** for the final handoff.
+
+> Opening `index.html` directly with `file://` may prevent the browser from loading `data/checklist.json` because of local-file security rules.
 
 ## Investigation phases
 
