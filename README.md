@@ -14,6 +14,24 @@ Instead of another directory containing hundreds of OSINT tools, this project fo
 
 > Data is stored locally in the browser by default. Do not record unnecessary personal data, credentials, secrets, or information you are not authorized to process.
 
+## v0.2 — Analyst Workbench
+
+The checklist is still the center of the product, but a case can now contain structured **Evidence, Entities, Relationships, Timeline events and Findings**. These objects are linked by stable IDs and remain in browser storage until explicitly exported.
+
+### New in v0.2
+
+- Evidence register with source type, observation time, source reliability, information credibility, hash/reference and checklist linkage
+- Entity register and typed relationship matrix
+- Timeline builder with links to entities and evidence
+- Analytic findings with confidence, supporting evidence, alternatives and caveats
+- Case health dashboard and cross-reference quality checks
+- Full case bundle export/import in JSON
+- Automatic migration of existing v0.1 browser state
+- Reports now include structured evidence, entities, relationships, timeline, findings and open core steps
+- Interface remains available in **pt-BR, English and Spanish**
+
+See [Case Schema](docs/CASE-SCHEMA.md) and [Source Evaluation](docs/SOURCE-EVALUATION.md).
+
 ## What it does
 
 - Dynamic investigation checklist with progress by phase
@@ -95,6 +113,8 @@ The default checklist covers:
 │   └── translations.es.json
 ├── docs/
 │   ├── METHODOLOGY.md
+│   ├── CASE-SCHEMA.md
+│   ├── SOURCE-EVALUATION.md
 │   └── PRIVACY.md
 ├── LICENSE
 └── README.md
@@ -143,11 +163,14 @@ See [Privacy & data handling](docs/PRIVACY.md).
 - [x] Process-gap insights
 
 ### v0.2 — Evidence workflow
-- [ ] Evidence register
-- [ ] Source reliability / information credibility fields
-- [ ] Timeline builder
-- [ ] Relationship matrix
-- [ ] Import/export case bundles
+- [x] Evidence register
+- [x] Source reliability / information credibility fields
+- [x] Timeline builder
+- [x] Entity and relationship matrix
+- [x] Analytic findings with evidence links and confidence
+- [x] Import/export case bundles
+- [x] v0.1 → v0.2 local-state migration
+- [x] Cross-reference process insights
 
 ### v0.3 — Optional assisted analysis
 - [ ] Explicit opt-in AI provider integration
