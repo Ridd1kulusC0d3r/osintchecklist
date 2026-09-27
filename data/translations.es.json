@@ -28,6 +28,18 @@
         "intake-06": {
           "title": "Definir entregable y audiencia",
           "description": "Por ejemplo: nota analítica, briefing ejecutivo, informe técnico o registro de verificación."
+        },
+        "intake-07": {
+          "title": "Identificar al decisor y a los stakeholders",
+          "description": "Registre quién tomará la decisión, quién consume el producto y quién puede aclarar el requisito."
+        },
+        "intake-08": {
+          "title": "Descomponer el requisito en preguntas de inteligencia",
+          "description": "Transforme la pregunta central en preguntas menores y verificables que orienten la recolección."
+        },
+        "intake-09": {
+          "title": "Definir el umbral de decisión",
+          "description": "Registre qué hallazgos cambiarían materialmente la decisión, prioridad o acción esperada."
         }
       }
     },
@@ -58,6 +70,14 @@
         "scope-06": {
           "title": "Identificar riesgos de contacto o impacto",
           "description": "Planifique recolección pasiva cuando la interacción no sea necesaria o autorizada."
+        },
+        "scope-07": {
+          "title": "Definir límites entre recolección pasiva e interacción",
+          "description": "Documente si el contacto, la autenticación, la solicitud de información u otra interacción están permitidos."
+        },
+        "scope-08": {
+          "title": "Definir clasificación, retención y compartición",
+          "description": "Establezca cómo se etiquetarán, almacenarán, compartirán y eliminarán los datos del caso."
         }
       }
     },
@@ -110,11 +130,19 @@
         "baseline-05": {
           "title": "Crear preguntas secundarias",
           "description": "¿Qué información faltante cambiaría materialmente la conclusión?"
+        },
+        "baseline-06": {
+          "title": "Asignar IDs estables a entidades conocidas",
+          "description": "Cree referencias estables para personas, organizaciones, cuentas, dominios y otros objetos antes de correlacionarlos."
+        },
+        "baseline-07": {
+          "title": "Listar supuestos críticos iniciales",
+          "description": "Haga explícitos los supuestos que cambiarían el camino o la conclusión de la investigación si fueran erróneos."
         }
       }
     },
     "search": {
-      "title": "05 · Descubrimiento web y estrategia de búsqueda",
+      "title": "06 · Descubrimiento web y estrategia de búsqueda",
       "description": "Busque por capas, registre consultas útiles y no dependa de un único buscador.",
       "items": {
         "search-01": {
@@ -140,11 +168,23 @@
         "search-06": {
           "title": "Registrar resultados negativos relevantes",
           "description": "La ausencia puede limitar hipótesis, pero no debe tratarse como prueba absoluta."
+        },
+        "search-07": {
+          "title": "Diversificar buscadores y tipos de fuente",
+          "description": "Evite depender de un solo buscador, plataforma, índice o clase de fuente."
+        },
+        "search-08": {
+          "title": "Verificar actualidad y validez temporal",
+          "description": "Confirme si la información aún representa el período relevante para el requisito de inteligencia."
+        },
+        "search-09": {
+          "title": "Registrar limitaciones de herramientas y consultas",
+          "description": "Documente cobertura, actualidad, falsos positivos, restricciones regionales y otras limitaciones que afecten la interpretación."
         }
       }
     },
     "social": {
-      "title": "06 · Presencia pública y SOCMINT",
+      "title": "07 · Presencia pública y SOCMINT",
       "description": "Mapee presencia y consistencia sin asumir que cuentas similares pertenecen a la misma entidad.",
       "items": {
         "social-01": {
@@ -170,11 +210,19 @@
         "social-06": {
           "title": "Registrar brechas por plataforma",
           "description": "La ausencia en una plataforma no significa ausencia de identidad digital."
+        },
+        "social-07": {
+          "title": "Registrar identificadores estables de plataforma",
+          "description": "Cuando sean públicos y relevantes, registre IDs estables además de nombres de usuario que pueden cambiar."
+        },
+        "social-08": {
+          "title": "Construir una cronología básica de cuentas relevantes",
+          "description": "Compare creación, primeras apariciones, cambios de nombre, biografía, enlaces y otros hitos observables."
         }
       }
     },
     "identifiers": {
-      "title": "07 · Pivotes de username e identificadores",
+      "title": "08 · Pivotes de username e identificadores",
       "description": "Use identificadores como pivotes, no como prueba automática de identidad.",
       "items": {
         "ident-01": {
@@ -192,11 +240,19 @@
         "ident-04": {
           "title": "Registrar colisiones y homónimos",
           "description": "Documente cuentas que parecen similares pero contienen señales contradictorias."
+        },
+        "ident-05": {
+          "title": "Evaluar colisión y frecuencia del identificador",
+          "description": "Considere si un username, nombre, dominio u otro identificador es lo bastante común como para producir vínculos falsos."
+        },
+        "ident-06": {
+          "title": "Registrar la cadena de pivotes",
+          "description": "Documente por qué cada pivote llevó al siguiente para que la correlación pueda auditarse y reproducirse."
         }
       }
     },
     "contact": {
-      "title": "08 · Exposición de correo y teléfono",
+      "title": "09 · Exposición de correo y teléfono",
       "description": "Verifique exposición pública de forma proporcional; no recopile credenciales.",
       "items": {
         "contact-01": {
@@ -222,7 +278,7 @@
       }
     },
     "org": {
-      "title": "09 · Organizaciones y registros públicos",
+      "title": "10 · Organizaciones y registros públicos",
       "description": "Estructure hechos corporativos antes de inferir relaciones o responsabilidades.",
       "items": {
         "org-01": {
@@ -248,7 +304,7 @@
       }
     },
     "infra": {
-      "title": "10 · Dominios e infraestructura pública",
+      "title": "11 · Dominios e infraestructura pública",
       "description": "Para OSINT de ciberseguridad, registre observaciones técnicas con timestamps y alcance.",
       "items": {
         "infra-01": {
@@ -278,7 +334,7 @@
       }
     },
     "media": {
-      "title": "11 · Imágenes, vídeos y documentos",
+      "title": "12 · Imágenes, vídeos y documentos",
       "description": "Verifique origen, contexto, cronología e integridad aparente.",
       "items": {
         "media-01": {
@@ -308,7 +364,7 @@
       }
     },
     "geo": {
-      "title": "12 · GEOINT y verificación temporal",
+      "title": "13 · GEOINT y verificación temporal",
       "description": "La geolocalización y la cronolocalización requieren convergencia de señales.",
       "items": {
         "geo-01": {
@@ -330,7 +386,7 @@
       }
     },
     "timeline": {
-      "title": "13 · Línea de tiempo y relaciones",
+      "title": "14 · Línea de tiempo y relaciones",
       "description": "Organice los eventos antes de explicar causalidad.",
       "items": {
         "time-01": {
@@ -356,7 +412,7 @@
       }
     },
     "sources": {
-      "title": "14 · Evaluación de fuentes y corroboración",
+      "title": "15 · Evaluación de fuentes y corroboración",
       "description": "La calidad de un informe rara vez supera la calidad de las fuentes que lo sustentan.",
       "items": {
         "src-01": {
@@ -378,11 +434,27 @@
         "src-05": {
           "title": "Registrar evidencia que contradice la hipótesis",
           "description": "El análisis debe sobrevivir a la evidencia incómoda."
+        },
+        "src-06": {
+          "title": "Comprobar independencia entre fuentes",
+          "description": "Verifique si fuentes aparentemente distintas dependen del mismo post, comunicado, dataset u origen."
+        },
+        "src-07": {
+          "title": "Evaluar acceso y proximidad de la fuente",
+          "description": "Considere si la fuente tenía capacidad real para observar o conocer la información reportada."
+        },
+        "src-08": {
+          "title": "Evaluar incentivos y posibles sesgos",
+          "description": "Registre intereses, contexto e incentivos sin descartar una fuente únicamente por posible sesgo."
+        },
+        "src-09": {
+          "title": "Evaluar actualidad de la información",
+          "description": "Confirme si la fuente y el dato son suficientemente actuales para la decisión o reconstrucción temporal."
         }
       }
     },
     "evidence": {
-      "title": "15 · Preservación y registro de evidencias",
+      "title": "16 · Preservación y registro de evidencias",
       "description": "Haga que la recolección sea auditable y reproducible en la medida necesaria.",
       "items": {
         "ev-01": {
@@ -408,12 +480,20 @@
         "ev-06": {
           "title": "Evitar replicar contenido sensible innecesariamente",
           "description": "Preserve el mínimo necesario y aplique controles de acceso adecuados."
+        },
+        "ev-07": {
+          "title": "Distinguir evidencia original de derivada",
+          "description": "Marque si el artefacto es original, copia, captura, transcripción, traducción, republicación o transformación."
+        },
+        "ev-08": {
+          "title": "Registrar método de obtención y reproducibilidad",
+          "description": "Explique cómo se localizó o capturó la evidencia y qué pasos debería repetir otro analista."
         }
       }
     },
     "analysis": {
-      "title": "16 · Análisis, alternativas y confianza",
-      "description": "Aquí los datos dejan de ser una colección de pestañas y se convierten en una evaluación defendible.",
+      "title": "17 · Análisis estructurado, alternativas y confianza",
+      "description": "Convierta datos en juicios comprobables, compare hipótesis y busque lo que contradice su lectura.",
       "items": {
         "an-01": {
           "title": "Listar juicios clave",
@@ -442,11 +522,31 @@
         "an-07": {
           "title": "Identificar brechas de inteligencia",
           "description": "Enumere preguntas no respondidas que todavía importan para la decisión."
+        },
+        "an-08": {
+          "title": "Realizar comprobación de supuestos clave",
+          "description": "Pruebe los supuestos que sostienen los principales juicios y registre el impacto si fueran erróneos."
+        },
+        "an-09": {
+          "title": "Comparar evidencias entre hipótesis competidoras",
+          "description": "Organice lo que apoya, contradice o es neutral para cada hipótesis plausible."
+        },
+        "an-10": {
+          "title": "Buscar activamente evidencia que contradiga",
+          "description": "Realice búsquedas deliberadas de información que debilite la hipótesis preferida."
+        },
+        "an-11": {
+          "title": "Definir qué cambiaría el juicio",
+          "description": "Liste indicadores o nueva evidencia que aumentaría, reduciría o invertiría la evaluación actual."
+        },
+        "an-12": {
+          "title": "Evaluar relevancia para la decisión e implicaciones",
+          "description": "Conecte los hallazgos con el requisito original y explique por qué cambian, o no, la decisión."
         }
       }
     },
     "report": {
-      "title": "17 · Informe, revisión y cierre",
+      "title": "19 · Informe, revisión y cierre",
       "description": "El producto final debe ser útil, rastreable y proporcional a la pregunta inicial.",
       "items": {
         "rep-01": {
@@ -480,6 +580,116 @@
         "rep-08": {
           "title": "Aplicar retención y eliminación adecuadas",
           "description": "Conserve solo lo necesario según la política y las obligaciones aplicables."
+        },
+        "rep-09": {
+          "title": "Explicar cambio o continuidad del juicio",
+          "description": "Cuando exista análisis previo, indique qué cambió, qué permaneció y qué nueva evidencia provocó la revisión."
+        },
+        "rep-10": {
+          "title": "Incluir evidencia material favorable y contraria",
+          "description": "No presente solo los datos que sostienen la narrativa principal; exponga contradicciones relevantes."
+        }
+      }
+    },
+    "plan": {
+      "title": "05 · Plan de recolección y estrategia de pivotes",
+      "description": "Transforme preguntas en una secuencia de recolección priorizada antes de navegar sin dirección.",
+      "items": {
+        "plan-01": {
+          "title": "Traducir preguntas en requisitos de recolección",
+          "description": "Para cada pregunta de inteligencia, defina qué datos observables podrían responderla."
+        },
+        "plan-02": {
+          "title": "Construir una matriz de fuentes",
+          "description": "Asocie cada pregunta con fuentes primarias, secundarias, oficiales, técnicas e históricas relevantes."
+        },
+        "plan-03": {
+          "title": "Priorizar por ganancia de información, costo y riesgo",
+          "description": "Comience por las fuentes que puedan reducir más incertidumbre con menor costo, exposición y tiempo."
+        },
+        "plan-04": {
+          "title": "Definir pivotes y orden de exploración",
+          "description": "Planifique qué identificadores pueden desbloquear nuevas fuentes y en qué secuencia se probarán."
+        },
+        "plan-05": {
+          "title": "Registrar hipótesis competidoras iniciales",
+          "description": "Mantenga más de una explicación plausible cuando los hechos permitan alternativas."
+        },
+        "plan-06": {
+          "title": "Definir indicadores que apoyen o debiliten hipótesis",
+          "description": "Liste señales observables que ayuden a diferenciar hipótesis competidoras."
+        },
+        "plan-07": {
+          "title": "Planificar variaciones de idioma, localidad y zona horaria",
+          "description": "Incluya transliteraciones, nombres locales, formatos de fecha y contexto regional cuando sea relevante."
+        },
+        "plan-08": {
+          "title": "Definir reglas para continuar, pivotar, escalar o detener",
+          "description": "Determine con anticipación cuándo una línea será abandonada, profundizada, escalada o cerrada."
+        }
+      }
+    },
+    "decision": {
+      "title": "18 · Gate de decisión y suficiencia analítica",
+      "description": "Deje de recolectar por hábito y compruebe si la investigación ya sustenta una decisión defendible.",
+      "items": {
+        "decision-01": {
+          "title": "Responder explícitamente cada pregunta de inteligencia",
+          "description": "Asocie una respuesta, aunque sea inconclusa, con cada pregunta definida al inicio."
+        },
+        "decision-02": {
+          "title": "Clasificar el estado de cada conclusión",
+          "description": "Diferencie sustentado, parcialmente sustentado, no sustentado y no resuelto."
+        },
+        "decision-03": {
+          "title": "Evaluar si las brechas restantes todavía cambian la decisión",
+          "description": "Determine qué brechas son materiales y cuáles pueden permanecer sin impedir el uso del producto."
+        },
+        "decision-04": {
+          "title": "Elegir la próxima acción del caso",
+          "description": "Decida entre cerrar, recolectar más, monitorear, solicitar apoyo especializado o escalar."
+        },
+        "decision-05": {
+          "title": "Separar hallazgos de recomendaciones",
+          "description": "No presente una acción recomendada como si fuera un hecho observado o un juicio de atribución."
+        },
+        "decision-06": {
+          "title": "Definir gatillos de reevaluación",
+          "description": "Registre qué nuevos eventos o indicadores exigirían reabrir o revisar la evaluación."
+        },
+        "decision-07": {
+          "title": "Calibrar confianza con calidad, cantidad y brechas",
+          "description": "Asegure que la confianza refleje el sustento real y no la convicción personal del analista."
+        }
+      }
+    },
+    "closure": {
+      "title": "20 · Post-caso, aprendizaje y monitoreo",
+      "description": "Cierre de forma reproducible y convierta lo que funcionó, o falló, en mejora metodológica.",
+      "items": {
+        "closure-01": {
+          "title": "Registrar lecciones aprendidas",
+          "description": "Documente qué enfoques ahorraron tiempo, cuáles fallaron y por qué."
+        },
+        "closure-02": {
+          "title": "Actualizar limitaciones de fuentes y herramientas",
+          "description": "Registre cambios, restricciones, falsos positivos y cobertura observados durante el caso."
+        },
+        "closure-03": {
+          "title": "Definir monitoreo o justificar su ausencia",
+          "description": "Si existe riesgo residual, establezca gatillos y frecuencia; de lo contrario, registre por qué monitorear no agrega valor."
+        },
+        "closure-04": {
+          "title": "Validar reproducibilidad de artefactos críticos",
+          "description": "Confirme que otro analista puede entender el origen, el camino y el sustento de los hallazgos principales."
+        },
+        "closure-05": {
+          "title": "Aplicar archivado y eliminación previstos",
+          "description": "Ejecute las reglas de retención, acceso y eliminación definidas para el caso."
+        },
+        "closure-06": {
+          "title": "Revisar el resultado frente a la pregunta y decisión originales",
+          "description": "Compruebe que el producto final respondió al problema que justificó la investigación y no solo produjo datos interesantes."
         }
       }
     }
