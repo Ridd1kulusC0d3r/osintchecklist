@@ -28,6 +28,18 @@
         "intake-06": {
           "title": "Define deliverable and audience",
           "description": "For example: analytical note, executive briefing, technical report or verification record."
+        },
+        "intake-07": {
+          "title": "Identify the decision owner and stakeholders",
+          "description": "Record who will make the decision, who consumes the product and who can clarify the requirement."
+        },
+        "intake-08": {
+          "title": "Decompose the requirement into intelligence questions",
+          "description": "Turn the central question into smaller, verifiable questions that guide collection."
+        },
+        "intake-09": {
+          "title": "Define the decision threshold",
+          "description": "Record which findings would materially change the expected decision, priority or action."
         }
       }
     },
@@ -58,12 +70,20 @@
         "scope-06": {
           "title": "Identify contact or impact risks",
           "description": "Plan passive collection when interaction is unnecessary or unauthorized."
+        },
+        "scope-07": {
+          "title": "Define passive-collection and interaction boundaries",
+          "description": "Document whether contact, authentication, information requests or other interaction is permitted in the case."
+        },
+        "scope-08": {
+          "title": "Define classification, retention and sharing",
+          "description": "Establish how case data will be labelled, stored, shared and disposed of."
         }
       }
     },
     "opsec": {
       "title": "03 · OPSEC and collection environment",
-      "description": "Protect the case, the sources and the analytical process itself.",
+      "description": "Protect the case, sources and the analytic process itself.",
       "items": {
         "opsec-01": {
           "title": "Use a dedicated research environment",
@@ -110,12 +130,20 @@
         "baseline-05": {
           "title": "Create secondary questions",
           "description": "Which missing information would materially change the conclusion?"
+        },
+        "baseline-06": {
+          "title": "Assign stable IDs to known entities",
+          "description": "Create stable references for people, organizations, accounts, domains and other objects before correlating them."
+        },
+        "baseline-07": {
+          "title": "List initial critical assumptions",
+          "description": "Make explicit the assumptions that would change the investigation path or conclusion if wrong."
         }
       }
     },
     "search": {
-      "title": "05 · Web discovery and search strategy",
-      "description": "Search in layers, record useful queries and do not rely on a single search engine.",
+      "title": "06 · Web discovery and search strategy",
+      "description": "Search in layers, record useful queries and do not depend on one engine.",
       "items": {
         "search-01": {
           "title": "Run exact searches for identifiers",
@@ -140,11 +168,23 @@
         "search-06": {
           "title": "Record relevant negative results",
           "description": "Absence can constrain hypotheses, but it should not be treated as absolute proof."
+        },
+        "search-07": {
+          "title": "Diversify search engines and source types",
+          "description": "Avoid depending on a single search engine, platform, index or source class."
+        },
+        "search-08": {
+          "title": "Check freshness and temporal validity",
+          "description": "Confirm whether the information still represents the period relevant to the intelligence requirement."
+        },
+        "search-09": {
+          "title": "Record tool and query limitations",
+          "description": "Document coverage, freshness, false positives, regional restrictions and other limitations affecting interpretation."
         }
       }
     },
     "social": {
-      "title": "06 · Public presence and SOCMINT",
+      "title": "07 · Public presence and SOCMINT",
       "description": "Map presence and consistency without assuming similar accounts belong to the same entity.",
       "items": {
         "social-01": {
@@ -170,11 +210,19 @@
         "social-06": {
           "title": "Record platform gaps",
           "description": "Absence from one platform does not mean absence of a digital identity."
+        },
+        "social-07": {
+          "title": "Record stable platform identifiers",
+          "description": "When public and relevant, record stable IDs in addition to usernames that may change."
+        },
+        "social-08": {
+          "title": "Build a basic chronology of relevant accounts",
+          "description": "Compare creation, first appearances, name changes, bios, links and other observable milestones."
         }
       }
     },
     "identifiers": {
-      "title": "07 · Username and identifier pivots",
+      "title": "08 · Username and identifier pivots",
       "description": "Use identifiers as pivots, not automatic proof of identity.",
       "items": {
         "ident-01": {
@@ -192,11 +240,19 @@
         "ident-04": {
           "title": "Record collisions and namesakes",
           "description": "Document accounts that appear similar but contain conflicting signals."
+        },
+        "ident-05": {
+          "title": "Assess identifier collision and commonness",
+          "description": "Consider whether a username, name, domain or other identifier is common enough to create false links."
+        },
+        "ident-06": {
+          "title": "Record the pivot chain",
+          "description": "Document why each pivot led to the next so the correlation can be audited and reproduced."
         }
       }
     },
     "contact": {
-      "title": "08 · Email and phone exposure",
+      "title": "09 · Email and phone exposure",
       "description": "Check public exposure proportionately; do not collect credentials.",
       "items": {
         "contact-01": {
@@ -222,7 +278,7 @@
       }
     },
     "org": {
-      "title": "09 · Organizations and public records",
+      "title": "10 · Organizations and public records",
       "description": "Structure corporate facts before inferring relationships or responsibility.",
       "items": {
         "org-01": {
@@ -248,7 +304,7 @@
       }
     },
     "infra": {
-      "title": "10 · Domains and public infrastructure",
+      "title": "11 · Domains and public infrastructure",
       "description": "For cyber OSINT, record technical observations with timestamps and scope.",
       "items": {
         "infra-01": {
@@ -278,7 +334,7 @@
       }
     },
     "media": {
-      "title": "11 · Images, video and documents",
+      "title": "12 · Images, video and documents",
       "description": "Verify origin, context, chronology and apparent integrity.",
       "items": {
         "media-01": {
@@ -308,7 +364,7 @@
       }
     },
     "geo": {
-      "title": "12 · GEOINT and temporal verification",
+      "title": "13 · GEOINT and temporal verification",
       "description": "Geolocation and chronolocation require convergence of signals.",
       "items": {
         "geo-01": {
@@ -330,7 +386,7 @@
       }
     },
     "timeline": {
-      "title": "13 · Timeline and relationships",
+      "title": "14 · Timeline and relationships",
       "description": "Organize events before explaining causality.",
       "items": {
         "time-01": {
@@ -356,7 +412,7 @@
       }
     },
     "sources": {
-      "title": "14 · Source evaluation and corroboration",
+      "title": "15 · Source evaluation and corroboration",
       "description": "A report's quality rarely exceeds the quality of the sources supporting it.",
       "items": {
         "src-01": {
@@ -378,11 +434,27 @@
         "src-05": {
           "title": "Record evidence that contradicts the hypothesis",
           "description": "Analysis should survive inconvenient evidence."
+        },
+        "src-06": {
+          "title": "Test source independence",
+          "description": "Check whether apparently distinct sources depend on the same post, statement, dataset or origin."
+        },
+        "src-07": {
+          "title": "Assess source access and proximity",
+          "description": "Consider whether the source had a realistic ability to observe or know the reported information."
+        },
+        "src-08": {
+          "title": "Assess incentives and possible bias",
+          "description": "Record interests, context and incentives without dismissing a source solely because bias may exist."
+        },
+        "src-09": {
+          "title": "Assess information recency",
+          "description": "Confirm whether the source and information are timely enough for the decision or temporal reconstruction."
         }
       }
     },
     "evidence": {
-      "title": "15 · Evidence preservation and logging",
+      "title": "16 · Evidence preservation and logging",
       "description": "Make collection auditable and reproducible to the extent necessary.",
       "items": {
         "ev-01": {
@@ -408,12 +480,20 @@
         "ev-06": {
           "title": "Avoid unnecessary replication of sensitive content",
           "description": "Preserve the minimum necessary and apply appropriate access controls."
+        },
+        "ev-07": {
+          "title": "Distinguish original from derivative evidence",
+          "description": "Mark whether the artifact is original, a copy, capture, transcript, translation, republication or transformation."
+        },
+        "ev-08": {
+          "title": "Record acquisition method and reproducibility",
+          "description": "Explain how the evidence was found or captured and what another analyst would need to repeat."
         }
       }
     },
     "analysis": {
-      "title": "16 · Analysis, alternatives and confidence",
-      "description": "This is where data stops being a collection of tabs and becomes a defensible assessment.",
+      "title": "17 · Structured analysis, alternatives and confidence",
+      "description": "Turn data into testable judgments, compare hypotheses and seek what contradicts your reading.",
       "items": {
         "an-01": {
           "title": "List key judgments",
@@ -442,11 +522,31 @@
         "an-07": {
           "title": "Identify intelligence gaps",
           "description": "List unanswered questions that still matter to the decision."
+        },
+        "an-08": {
+          "title": "Run a key-assumptions check",
+          "description": "Test the assumptions supporting major judgments and record the impact if they are wrong."
+        },
+        "an-09": {
+          "title": "Compare evidence across competing hypotheses",
+          "description": "Organize what supports, contradicts or is neutral to each plausible hypothesis."
+        },
+        "an-10": {
+          "title": "Actively seek disconfirming evidence",
+          "description": "Conduct deliberate searches for information that weakens the preferred hypothesis."
+        },
+        "an-11": {
+          "title": "Define what would change the judgment",
+          "description": "List indicators or new evidence that would raise, lower or reverse the current assessment."
+        },
+        "an-12": {
+          "title": "Assess decision relevance and implications",
+          "description": "Connect findings to the original requirement and explain why they do, or do not, change the decision."
         }
       }
     },
     "report": {
-      "title": "17 · Reporting, review and closure",
+      "title": "19 · Reporting, review and closure",
       "description": "The final product should be useful, traceable and proportionate to the initial question.",
       "items": {
         "rep-01": {
@@ -480,6 +580,116 @@
         "rep-08": {
           "title": "Apply appropriate retention and disposal",
           "description": "Keep only what is necessary under applicable policy and obligations."
+        },
+        "rep-09": {
+          "title": "Explain change or continuity in judgment",
+          "description": "When prior analysis exists, state what changed, what remained and which new evidence caused the revision."
+        },
+        "rep-10": {
+          "title": "Include material supporting and contrary evidence",
+          "description": "Do not present only data supporting the main narrative; surface relevant contradictions."
+        }
+      }
+    },
+    "plan": {
+      "title": "05 · Collection plan and pivot strategy",
+      "description": "Turn questions into a prioritized collection sequence before browsing without direction.",
+      "items": {
+        "plan-01": {
+          "title": "Translate questions into collection requirements",
+          "description": "For each intelligence question, define which observable data could answer it."
+        },
+        "plan-02": {
+          "title": "Build a source matrix",
+          "description": "Map each question to relevant primary, secondary, official, technical and historical sources."
+        },
+        "plan-03": {
+          "title": "Prioritize by information gain, cost and risk",
+          "description": "Start with sources that can reduce the most uncertainty with the least cost, exposure and time."
+        },
+        "plan-04": {
+          "title": "Define pivots and exploration order",
+          "description": "Plan which identifiers may unlock new sources and the sequence in which they will be tested."
+        },
+        "plan-05": {
+          "title": "Record initial competing hypotheses",
+          "description": "Maintain more than one plausible explanation when the facts allow alternatives."
+        },
+        "plan-06": {
+          "title": "Define indicators that support or weaken hypotheses",
+          "description": "List observable signals that would help distinguish competing hypotheses."
+        },
+        "plan-07": {
+          "title": "Plan language, locale and timezone variations",
+          "description": "Include transliterations, local names, date formats and regional context when relevant."
+        },
+        "plan-08": {
+          "title": "Define continue, pivot, escalate or stop rules",
+          "description": "Decide in advance when a line will be abandoned, deepened, escalated or closed."
+        }
+      }
+    },
+    "decision": {
+      "title": "18 · Decision gate and analytic sufficiency",
+      "description": "Stop collecting by habit and test whether the investigation already supports a defensible decision.",
+      "items": {
+        "decision-01": {
+          "title": "Explicitly answer each intelligence question",
+          "description": "Associate an answer, even if inconclusive, with every question defined at the start."
+        },
+        "decision-02": {
+          "title": "Classify the state of each conclusion",
+          "description": "Distinguish supported, partially supported, unsupported and unresolved."
+        },
+        "decision-03": {
+          "title": "Assess whether remaining gaps still change the decision",
+          "description": "Determine which gaps are material and which can remain without blocking use of the product."
+        },
+        "decision-04": {
+          "title": "Choose the case's next action",
+          "description": "Decide whether to close, collect more, monitor, request specialist support or escalate."
+        },
+        "decision-05": {
+          "title": "Separate findings from recommendations",
+          "description": "Do not present a recommended action as though it were an observed fact or attribution judgment."
+        },
+        "decision-06": {
+          "title": "Define reassessment triggers",
+          "description": "Record which new events or indicators would require reopening or revising the assessment."
+        },
+        "decision-07": {
+          "title": "Calibrate confidence to quality, quantity and gaps",
+          "description": "Ensure confidence reflects actual support rather than the analyst's personal conviction."
+        }
+      }
+    },
+    "closure": {
+      "title": "20 · Post-case learning and monitoring",
+      "description": "Close reproducibly and turn what worked, or failed, into methodological improvement.",
+      "items": {
+        "closure-01": {
+          "title": "Record lessons learned",
+          "description": "Document which approaches saved time, which failed and why."
+        },
+        "closure-02": {
+          "title": "Update source and tool limitations",
+          "description": "Record changes, restrictions, false positives and coverage observed during the case."
+        },
+        "closure-03": {
+          "title": "Define monitoring or justify its absence",
+          "description": "If residual risk exists, set triggers and cadence; otherwise record why monitoring adds no value."
+        },
+        "closure-04": {
+          "title": "Validate reproducibility of critical artifacts",
+          "description": "Confirm another analyst can understand the origin, path and support for the main findings."
+        },
+        "closure-05": {
+          "title": "Apply planned archiving and disposal",
+          "description": "Execute the retention, access and disposal rules defined for the case."
+        },
+        "closure-06": {
+          "title": "Review the result against the original question and decision",
+          "description": "Check that the final product answered the problem that justified the investigation rather than merely producing interesting data."
         }
       }
     }
