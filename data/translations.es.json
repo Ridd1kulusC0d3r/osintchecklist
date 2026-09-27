@@ -1,0 +1,487 @@
+{
+  "locale": "es",
+  "phases": {
+    "intake": {
+      "title": "01 · Recepción y pregunta de inteligencia",
+      "description": "Defina el problema antes de abrir veinte pestañas y llamarlo investigación.",
+      "items": {
+        "intake-01": {
+          "title": "Definir la pregunta central",
+          "description": "Formule una pregunta específica que pueda responderse con evidencia observable."
+        },
+        "intake-02": {
+          "title": "Definir la decisión que se apoyará",
+          "description": "Registre para qué se utilizará el resultado y quién lo utilizará."
+        },
+        "intake-03": {
+          "title": "Registrar el contexto conocido",
+          "description": "Separe hechos aportados, alegaciones, supuestos y brechas iniciales de información."
+        },
+        "intake-04": {
+          "title": "Definir urgencia y plazo",
+          "description": "Establezca el tiempo disponible y la prioridad antes de la recolección."
+        },
+        "intake-05": {
+          "title": "Definir criterios de cierre",
+          "description": "Establezca cuándo la investigación estará suficientemente respondida."
+        },
+        "intake-06": {
+          "title": "Definir entregable y audiencia",
+          "description": "Por ejemplo: nota analítica, briefing ejecutivo, informe técnico o registro de verificación."
+        }
+      }
+    },
+    "scope": {
+      "title": "02 · Alcance, legalidad y minimización",
+      "description": "Delimite qué puede, debe y no debe recopilarse.",
+      "items": {
+        "scope-01": {
+          "title": "Definir período y geografía",
+          "description": "Registre ventana temporal, idiomas, países o regiones relevantes."
+        },
+        "scope-02": {
+          "title": "Definir fuentes permitidas",
+          "description": "Enumere categorías de fuentes públicas y restricciones aplicables."
+        },
+        "scope-03": {
+          "title": "Confirmar autorización y base legal",
+          "description": "Verifique mandato, normas internas y requisitos legales aplicables."
+        },
+        "scope-04": {
+          "title": "Aplicar minimización de datos",
+          "description": "Recopile únicamente lo necesario para responder la pregunta."
+        },
+        "scope-05": {
+          "title": "Definir datos que no deben registrarse",
+          "description": "Evite credenciales, secretos y datos personales irrelevantes o excesivos."
+        },
+        "scope-06": {
+          "title": "Identificar riesgos de contacto o impacto",
+          "description": "Planifique recolección pasiva cuando la interacción no sea necesaria o autorizada."
+        }
+      }
+    },
+    "opsec": {
+      "title": "03 · OPSEC y entorno de recolección",
+      "description": "Proteja el caso, las fuentes y el propio proceso analítico.",
+      "items": {
+        "opsec-01": {
+          "title": "Usar un entorno de investigación dedicado",
+          "description": "Separe la actividad investigativa de la navegación y las cuentas personales."
+        },
+        "opsec-02": {
+          "title": "Revisar la exposición del navegador y la sesión",
+          "description": "Evite autenticación personal, autocompletado y sincronizaciones innecesarias."
+        },
+        "opsec-03": {
+          "title": "Definir una estrategia de archivado",
+          "description": "Prepare convenciones de nombres, timestamps y una ubicación segura para evidencias."
+        },
+        "opsec-04": {
+          "title": "Registrar las herramientas utilizadas",
+          "description": "Documente herramienta, versión o servicio y sus limitaciones relevantes."
+        },
+        "opsec-05": {
+          "title": "Evitar interacción innecesaria con el objeto",
+          "description": "No dé me gusta, siga, contacte ni altere el entorno salvo que forme parte de un método autorizado."
+        }
+      }
+    },
+    "baseline": {
+      "title": "04 · Línea base: hechos, entidades e identificadores",
+      "description": "Construya el punto de partida sin confundir coincidencia con identidad.",
+      "items": {
+        "baseline-01": {
+          "title": "Registrar entidades conocidas",
+          "description": "Use alias o referencias internas siempre que sea posible."
+        },
+        "baseline-02": {
+          "title": "Registrar identificadores conocidos",
+          "description": "Usernames, dominios, correos corporativos, teléfonos corporativos, IDs públicos u otros pivotes autorizados."
+        },
+        "baseline-03": {
+          "title": "Crear una lista de variaciones",
+          "description": "Considere grafías, alias, transliteraciones, marcas, nombres anteriores y patrones de username."
+        },
+        "baseline-04": {
+          "title": "Separar hecho, alegación e hipótesis",
+          "description": "Etiquete explícitamente cada tipo antes de iniciar pivotes."
+        },
+        "baseline-05": {
+          "title": "Crear preguntas secundarias",
+          "description": "¿Qué información faltante cambiaría materialmente la conclusión?"
+        }
+      }
+    },
+    "search": {
+      "title": "05 · Descubrimiento web y estrategia de búsqueda",
+      "description": "Busque por capas, registre consultas útiles y no dependa de un único buscador.",
+      "items": {
+        "search-01": {
+          "title": "Realizar búsquedas exactas de identificadores",
+          "description": "Comience con combinaciones precisas y documente resultados relevantes."
+        },
+        "search-02": {
+          "title": "Buscar variaciones y contexto",
+          "description": "Combine alias, organización, lugar, fecha, evento o tema relevante."
+        },
+        "search-03": {
+          "title": "Buscar versiones archivadas",
+          "description": "Revise el historial de páginas o documentos cuando el cambio temporal sea relevante."
+        },
+        "search-04": {
+          "title": "Buscar documentos y archivos públicos",
+          "description": "Busque presentaciones, PDF, hojas de cálculo, comunicados o material oficial relevante."
+        },
+        "search-05": {
+          "title": "Registrar consultas de alto valor",
+          "description": "Conserve las consultas que produjeron evidencia o deban repetirse."
+        },
+        "search-06": {
+          "title": "Registrar resultados negativos relevantes",
+          "description": "La ausencia puede limitar hipótesis, pero no debe tratarse como prueba absoluta."
+        }
+      }
+    },
+    "social": {
+      "title": "06 · Presencia pública y SOCMINT",
+      "description": "Mapee presencia y consistencia sin asumir que cuentas similares pertenecen a la misma entidad.",
+      "items": {
+        "social-01": {
+          "title": "Mapear perfiles oficiales o declarados",
+          "description": "Registre URL, identificador estable, fecha de observación y fuente de confirmación."
+        },
+        "social-02": {
+          "title": "Buscar perfiles candidatos o de suplantación",
+          "description": "Clasifique como candidato, probable suplantación o confirmado solo cuando exista evidencia suficiente."
+        },
+        "social-03": {
+          "title": "Comparar biografía, avatar y enlaces",
+          "description": "Use la consistencia entre atributos como señales, no como identificación aislada."
+        },
+        "social-04": {
+          "title": "Revisar historial público de publicaciones",
+          "description": "Observe temas, fechas, cambios y referencias cruzadas relevantes para el caso."
+        },
+        "social-05": {
+          "title": "Mapear relaciones públicamente observables",
+          "description": "Diferencie interacción, asociación declarada e inferencia de relación."
+        },
+        "social-06": {
+          "title": "Registrar brechas por plataforma",
+          "description": "La ausencia en una plataforma no significa ausencia de identidad digital."
+        }
+      }
+    },
+    "identifiers": {
+      "title": "07 · Pivotes de username e identificadores",
+      "description": "Use identificadores como pivotes, no como prueba automática de identidad.",
+      "items": {
+        "ident-01": {
+          "title": "Buscar reutilización de username",
+          "description": "Registre solo coincidencias relevantes y verificables."
+        },
+        "ident-02": {
+          "title": "Comparar atributos entre cuentas candidatas",
+          "description": "Fechas, enlaces, idioma, temas, imágenes y referencias mutuas pueden aumentar o reducir la plausibilidad."
+        },
+        "ident-03": {
+          "title": "Buscar referencias cruzadas explícitas",
+          "description": "Priorice enlaces o declaraciones que conecten directamente dos identificadores."
+        },
+        "ident-04": {
+          "title": "Registrar colisiones y homónimos",
+          "description": "Documente cuentas que parecen similares pero contienen señales contradictorias."
+        }
+      }
+    },
+    "contact": {
+      "title": "08 · Exposición de correo y teléfono",
+      "description": "Verifique exposición pública de forma proporcional; no recopile credenciales.",
+      "items": {
+        "contact-01": {
+          "title": "Verificar referencias públicas a correos autorizados",
+          "description": "Registre contexto y fuente, no solo la aparición."
+        },
+        "contact-02": {
+          "title": "Verificar indicadores de exposición mediante servicios legítimos",
+          "description": "Use servicios de notificación/consulta permitidos y registre solo metadatos necesarios."
+        },
+        "contact-03": {
+          "title": "No almacenar contraseñas ni secretos encontrados",
+          "description": "Registre únicamente que hubo exposición y trate el material sensible según la política aplicable."
+        },
+        "contact-04": {
+          "title": "Verificar referencias públicas a teléfonos autorizados",
+          "description": "Registre origen, fecha y contexto sin ampliar innecesariamente datos personales."
+        },
+        "contact-05": {
+          "title": "Corroborar la asociación antes de atribuir",
+          "description": "Un teléfono o correo compartido, reciclado o publicado por terceros puede inducir a error."
+        }
+      }
+    },
+    "org": {
+      "title": "09 · Organizaciones y registros públicos",
+      "description": "Estructure hechos corporativos antes de inferir relaciones o responsabilidades.",
+      "items": {
+        "org-01": {
+          "title": "Confirmar identidad jurídica o institucional",
+          "description": "Nombre legal, nombre comercial, jurisdicción y registros oficiales cuando estén disponibles."
+        },
+        "org-02": {
+          "title": "Mapear presencia oficial",
+          "description": "Sitio web, perfiles institucionales, comunicados y canales oficiales."
+        },
+        "org-03": {
+          "title": "Verificar cambios históricos relevantes",
+          "description": "Razón social, dominio, liderazgo, direcciones institucionales u otros hechos públicos pertinentes."
+        },
+        "org-04": {
+          "title": "Mapear relaciones corporativas declaradas",
+          "description": "Subsidiarias, matrices, socios o proveedores solo cuando estén sustentados por fuentes."
+        },
+        "org-05": {
+          "title": "Revisar registros regulatorios o judiciales relevantes",
+          "description": "Use fuentes públicas oficiales y respete el alcance de la investigación."
+        }
+      }
+    },
+    "infra": {
+      "title": "10 · Dominios e infraestructura pública",
+      "description": "Para OSINT de ciberseguridad, registre observaciones técnicas con timestamps y alcance.",
+      "items": {
+        "infra-01": {
+          "title": "Confirmar dominio y propiedad declarada",
+          "description": "Correlacione sitio oficial, registros y documentación pública."
+        },
+        "infra-02": {
+          "title": "Registrar DNS público relevante",
+          "description": "Documente registros pertinentes al caso con fecha y fuente."
+        },
+        "infra-03": {
+          "title": "Revisar certificados y subdominios observables públicamente",
+          "description": "Use datos públicos para mapear relaciones de infraestructura sin inferir control sin corroboración."
+        },
+        "infra-04": {
+          "title": "Verificar historial público del dominio",
+          "description": "Cambios de contenido, resolución o certificados pueden ser temporalmente relevantes."
+        },
+        "infra-05": {
+          "title": "Registrar servicios expuestos solo desde fuentes pasivas/autorizadas",
+          "description": "No convierta una investigación OSINT en un escaneo intrusivo."
+        },
+        "infra-06": {
+          "title": "Separar co-alojamiento de control común",
+          "description": "La infraestructura compartida no demuestra automáticamente relación entre entidades."
+        }
+      }
+    },
+    "media": {
+      "title": "11 · Imágenes, vídeos y documentos",
+      "description": "Verifique origen, contexto, cronología e integridad aparente.",
+      "items": {
+        "media-01": {
+          "title": "Preservar el archivo o referencia original cuando esté permitido",
+          "description": "Registre URL, timestamp y contexto de obtención."
+        },
+        "media-02": {
+          "title": "Realizar búsqueda inversa de imagen",
+          "description": "Busque apariciones anteriores y versiones relacionadas."
+        },
+        "media-03": {
+          "title": "Examinar metadatos disponibles",
+          "description": "Trate los metadatos como una señal que puede faltar, haber sido alterada o ser incorrecta."
+        },
+        "media-04": {
+          "title": "Verificar contenido visual y contexto",
+          "description": "Compare escenario, señales, arquitectura, clima, sombras, idioma y otros elementos relevantes."
+        },
+        "media-05": {
+          "title": "Verificar cronología de publicación",
+          "description": "Identifique la publicación más antigua encontrada sin asumir que sea el origen absoluto."
+        },
+        "media-06": {
+          "title": "Registrar limitaciones de la verificación",
+          "description": "Explique qué no pudo autenticarse o atribuirse."
+        }
+      }
+    },
+    "geo": {
+      "title": "12 · GEOINT y verificación temporal",
+      "description": "La geolocalización y la cronolocalización requieren convergencia de señales.",
+      "items": {
+        "geo-01": {
+          "title": "Listar indicadores geográficos observables",
+          "description": "Texto, paisaje, infraestructura, transporte, arquitectura o referencias locales."
+        },
+        "geo-02": {
+          "title": "Comparar indicadores con fuentes independientes",
+          "description": "Busque confirmación mediante mapas, imágenes históricas o fuentes públicas oficiales."
+        },
+        "geo-03": {
+          "title": "Verificar consistencia temporal",
+          "description": "Clima, eventos, horarios, versiones de páginas y otras pistas deben ser compatibles."
+        },
+        "geo-04": {
+          "title": "Declarar el nivel de precisión",
+          "description": "Diferencie país, ciudad, área y ubicación específica; no exagere la resolución de la evidencia."
+        }
+      }
+    },
+    "timeline": {
+      "title": "13 · Línea de tiempo y relaciones",
+      "description": "Organice los eventos antes de explicar causalidad.",
+      "items": {
+        "time-01": {
+          "title": "Crear una línea de tiempo de eventos relevantes",
+          "description": "Incluya fuente, timestamp, zona horaria y nivel de certeza cuando sea necesario."
+        },
+        "time-02": {
+          "title": "Normalizar fechas y zonas horarias",
+          "description": "Evite conclusiones erróneas causadas por timezone, republicación o captura tardía."
+        },
+        "time-03": {
+          "title": "Mapear relaciones con tipo explícito",
+          "description": "Por ejemplo: declarado por, enlaza a, comparte infraestructura, interactúa con, emplea."
+        },
+        "time-04": {
+          "title": "Distinguir correlación de causalidad",
+          "description": "Eventos cercanos en el tiempo o en un grafo no demuestran una relación causal."
+        },
+        "time-05": {
+          "title": "Registrar eventos contradictorios",
+          "description": "Los conflictos son datos útiles; no los oculte para salvar la narrativa."
+        }
+      }
+    },
+    "sources": {
+      "title": "14 · Evaluación de fuentes y corroboración",
+      "description": "La calidad de un informe rara vez supera la calidad de las fuentes que lo sustentan.",
+      "items": {
+        "src-01": {
+          "title": "Evaluar origen y proximidad de la fuente",
+          "description": "Diferencie fuente primaria, derivada, republicación y agregador."
+        },
+        "src-02": {
+          "title": "Evaluar credibilidad y limitaciones",
+          "description": "Considere historial, acceso, intereses, posibles sesgos y método de obtención."
+        },
+        "src-03": {
+          "title": "Corroborar juicios importantes",
+          "description": "Busque fuentes independientes o evidencia complementaria."
+        },
+        "src-04": {
+          "title": "Distinguir múltiples fuentes de múltiples copias",
+          "description": "Cinco artículos que copian el mismo origen siguen siendo una sola cadena informativa."
+        },
+        "src-05": {
+          "title": "Registrar evidencia que contradice la hipótesis",
+          "description": "El análisis debe sobrevivir a la evidencia incómoda."
+        }
+      }
+    },
+    "evidence": {
+      "title": "15 · Preservación y registro de evidencias",
+      "description": "Haga que la recolección sea auditable y reproducible en la medida necesaria.",
+      "items": {
+        "ev-01": {
+          "title": "Registrar URL/fuente y timestamp",
+          "description": "Toda evidencia material debe apuntar a su origen y momento de observación."
+        },
+        "ev-02": {
+          "title": "Preservar copia o captura cuando corresponda",
+          "description": "Use un método proporcional al caso y a las reglas aplicables."
+        },
+        "ev-03": {
+          "title": "Registrar contexto de la captura",
+          "description": "Explique qué se estaba observando y por qué es relevante."
+        },
+        "ev-04": {
+          "title": "Generar hash para archivos relevantes",
+          "description": "Cuando la integridad sea importante, registre el hash y el método utilizado."
+        },
+        "ev-05": {
+          "title": "Mantener una convención consistente de evidencias",
+          "description": "IDs, nombres de archivo, fechas y referencias deben ser fáciles de auditar."
+        },
+        "ev-06": {
+          "title": "Evitar replicar contenido sensible innecesariamente",
+          "description": "Preserve el mínimo necesario y aplique controles de acceso adecuados."
+        }
+      }
+    },
+    "analysis": {
+      "title": "16 · Análisis, alternativas y confianza",
+      "description": "Aquí los datos dejan de ser una colección de pestañas y se convierten en una evaluación defendible.",
+      "items": {
+        "an-01": {
+          "title": "Listar juicios clave",
+          "description": "Escriba las principales conclusiones como afirmaciones específicas y comprobables."
+        },
+        "an-02": {
+          "title": "Vincular cada juicio con la evidencia",
+          "description": "Ninguna conclusión material debe quedar flotando sin fuente o razonamiento explícito."
+        },
+        "an-03": {
+          "title": "Separar observación de inferencia",
+          "description": "Use lenguaje que deje claro qué fue observado y qué fue interpretado."
+        },
+        "an-04": {
+          "title": "Considerar hipótesis alternativas",
+          "description": "Explique al menos una alternativa plausible cuando exista incertidumbre material."
+        },
+        "an-05": {
+          "title": "Asignar confianza a los juicios",
+          "description": "Baja, moderada o alta, acompañada de la razón y las limitaciones."
+        },
+        "an-06": {
+          "title": "Revisar sesgos y supuestos",
+          "description": "Compruebe sesgo de confirmación, disponibilidad, anclaje y narrativas excesivamente coherentes."
+        },
+        "an-07": {
+          "title": "Identificar brechas de inteligencia",
+          "description": "Enumere preguntas no respondidas que todavía importan para la decisión."
+        }
+      }
+    },
+    "report": {
+      "title": "17 · Informe, revisión y cierre",
+      "description": "El producto final debe ser útil, rastreable y proporcional a la pregunta inicial.",
+      "items": {
+        "rep-01": {
+          "title": "Escribir el resumen ejecutivo / BLUF",
+          "description": "Comience por la respuesta, el impacto y el nivel de confianza."
+        },
+        "rep-02": {
+          "title": "Documentar metodología y alcance",
+          "description": "Explique fuentes, período, limitaciones y exclusiones relevantes."
+        },
+        "rep-03": {
+          "title": "Presentar hallazgos con referencias",
+          "description": "Cada hallazgo material debe poder rastrearse hasta la evidencia."
+        },
+        "rep-04": {
+          "title": "Declarar limitaciones e incertidumbre",
+          "description": "No entierre las salvedades después de cuarenta páginas de certeza performativa."
+        },
+        "rep-05": {
+          "title": "Revisar lenguaje y atribuciones",
+          "description": "Elimine afirmaciones más fuertes de lo que permite la evidencia."
+        },
+        "rep-06": {
+          "title": "Realizar revisión por otro analista cuando sea posible",
+          "description": "Solicite revisión de evidencia, lógica y claridad, no solo ortografía."
+        },
+        "rep-07": {
+          "title": "Registrar pendientes y próximos pasos",
+          "description": "Documente brechas, monitoreo necesario y acciones recomendadas."
+        },
+        "rep-08": {
+          "title": "Aplicar retención y eliminación adecuadas",
+          "description": "Conserve solo lo necesario según la política y las obligaciones aplicables."
+        }
+      }
+    }
+  }
+}
