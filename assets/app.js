@@ -1,7 +1,7 @@
 const STORAGE_KEY = "osintChecklistCaseV1";
 const LANG_KEY = "osintChecklistLanguageV1";
 const SCHEMA = "osintchecklist.case.v3";
-const APP_VERSION = "0.3.0";
+const APP_VERSION = "0.3.1";
 
 let baseModel = null;
 let model = null;
@@ -764,7 +764,28 @@ function bind(){
 }
 async function init(){
   loadState();
-  try{model=await loadLocalizedModel(currentLang);}catch(e){console.error(e);$("checklist").innerHTML='<div class="empty">Could not load checklist data.</div>';return;}
-  renderAll();bind();
+  const status=$("appStatus");
+  try{
+    bind();
+    model=await loadLocalizedModel(currentLang);
+    renderAll();
+    if(status){
+      status.textContent="READY";
+      status.classList.remove("loading","error");
+      status.classList.add("ready");
+      status.title="Application initialized successfully";
+    }
+  }catch(e){
+    console.error("OSINT Workbench initialization failed",e);
+    if(status){
+      status.textContent="ERROR";
+      status.classList.remove("loading","ready");
+      status.classList.add("error");
+      status.title=String(e?.message||e);
+    }
+    if($("checklist")){
+      $("checklist").innerHTML='<div class="empty"><strong>Application error.</strong><br>Refresh the page. If the error persists, check the browser console.</div>';
+    }
+  }
 }
 document.addEventListener("DOMContentLoaded",init);
