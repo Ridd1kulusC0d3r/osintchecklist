@@ -1,7 +1,7 @@
 const STORAGE_KEY = "osintChecklistCaseV1";
 const LANG_KEY = "osintChecklistLanguageV1";
-const SCHEMA = "osintchecklist.case.v2";
-const APP_VERSION = "0.2.0";
+const SCHEMA = "osintchecklist.case.v3";
+const APP_VERSION = "0.3.0";
 
 let baseModel = null;
 let model = null;
@@ -10,7 +10,7 @@ let currentLang = detectLanguage();
 let activeTab = "checklist";
 
 const EMPTY_STATE = () => ({
-  schemaVersion: 2,
+  schemaVersion: 3,
   meta: {
     caseRef: "",
     profile: "all",
@@ -25,13 +25,23 @@ const EMPTY_STATE = () => ({
   entities: [],
   relationships: [],
   timeline: [],
-  findings: []
+  findings: [],
+  logbook: [],
+  uiMode: "full"
 });
 
 let state = EMPTY_STATE();
 
 const I18N = {
   "pt-BR": {
+    modes:{quick:"Diário de bordo",full:"Workbench completo"},
+    modeHintQuick:"Modo rápido: marque ações executadas e o sistema registra o histórico automaticamente. Use notas rápidas quando precisar.",
+    modeHintFull:"Modo completo: checklist + evidências + entidades + relações + timeline + achados.",
+    stages:{direction:"1 · Direção",collection:"2 · Coleta",synthesis:"3 · Corroboração e síntese",decision:"4 · Análise e decisão",closure:"5 · Entrega e aprendizado"},
+    logbookHeading:"Diário de bordo",logbookIntro:"Histórico cronológico das ações registradas no caso. Mudanças no checklist entram automaticamente.",
+    logbookNote:"Nota rápida",logbookNotePh:"Registre uma observação geral sem precisar abrir cada item do checklist.",addLogbookNote:"Adicionar nota",exportLogbook:"Exportar diário",
+    logbookEmpty:"Nenhuma atividade registrada.",logActions:{task:"Checklist",note:"Nota",evidence:"Evidência",entity:"Entidade",relationship:"Relação",timeline:"Timeline",finding:"Achado"},
+
     subtitle:"Workbench local-first para conduzir, documentar, correlacionar e revisar investigações OSINT.",
     language:"Idioma", privacyTitle:"Os dados do caso ficam neste navegador até você exportá-los.",
     caseKicker:"CONTROLE DO CASO", case:"Caso", reset:"Limpar", caseRef:"Referência do caso",
@@ -45,7 +55,7 @@ const I18N = {
     bundleKicker:"PACOTE DO CASO", export:"Exportar & backup", exportBundle:"Exportar pacote do caso",
     importBundle:"Importar pacote do caso", exportMd:"Exportar relatório Markdown", print:"Imprimir / salvar PDF",
     insights:"Insights de processo", exportHint:"O pacote JSON contém checklist e registros do workbench. Guarde-o como dado de caso.",
-    tabs:{checklist:"Checklist",evidence:"Evidências",entities:"Entidades & relações",timeline:"Timeline",findings:"Achados"},
+    tabs:{checklist:"Checklist",evidence:"Evidências",entities:"Entidades & relações",timeline:"Timeline",findings:"Achados",logbook:"Diário"},
     checklist:"Checklist", searchPh:"Filtrar tarefas...", core:"NÚCLEO", contextual:"CONTEXTUAL",
     legendCore:"Etapa núcleo", legendContext:"Etapa contextual", legendCaveat:"✓ executar ≠ confirmar hipótese",
     status:{all:"Todos os status",todo:"Não iniciado",doing:"Em andamento",done:"Concluído",na:"Não aplicável"},
@@ -103,6 +113,14 @@ const I18N = {
     }
   },
   en: {
+    modes:{quick:"Quick log",full:"Full workbench"},
+    modeHintQuick:"Fast mode: mark completed actions and the system automatically records the activity trail. Add quick notes only when needed.",
+    modeHintFull:"Full mode: checklist + evidence + entities + relationships + timeline + findings.",
+    stages:{direction:"1 · Direction",collection:"2 · Collection",synthesis:"3 · Corroboration & synthesis",decision:"4 · Analysis & decision",closure:"5 · Delivery & learning"},
+    logbookHeading:"Logbook",logbookIntro:"Chronological history of case activity. Checklist state changes are recorded automatically.",
+    logbookNote:"Quick note",logbookNotePh:"Record a general observation without opening every checklist item.",addLogbookNote:"Add note",exportLogbook:"Export logbook",
+    logbookEmpty:"No activity recorded.",logActions:{task:"Checklist",note:"Note",evidence:"Evidence",entity:"Entity",relationship:"Relationship",timeline:"Timeline",finding:"Finding"},
+
     subtitle:"A local-first workbench to conduct, document, correlate and review OSINT investigations.",
     language:"Language", privacyTitle:"Case data stays in this browser until you export it.",
     caseKicker:"CASE CONTROL", case:"Case", reset:"Reset", caseRef:"Case reference",
@@ -116,7 +134,7 @@ const I18N = {
     bundleKicker:"CASE BUNDLE", export:"Export & backup", exportBundle:"Export case bundle",
     importBundle:"Import case bundle", exportMd:"Export Markdown report", print:"Print / save PDF",
     insights:"Process insights", exportHint:"The JSON bundle contains checklist and workbench records. Treat it as case data.",
-    tabs:{checklist:"Checklist",evidence:"Evidence",entities:"Entities & relationships",timeline:"Timeline",findings:"Findings"},
+    tabs:{checklist:"Checklist",evidence:"Evidence",entities:"Entities & relationships",timeline:"Timeline",findings:"Findings",logbook:"Logbook"},
     checklist:"Checklist", searchPh:"Filter tasks...", core:"CORE", contextual:"CONTEXTUAL",
     legendCore:"Core step", legendContext:"Contextual step", legendCaveat:"✓ performed ≠ hypothesis confirmed",
     status:{all:"All statuses",todo:"Not started",doing:"In progress",done:"Completed",na:"Not applicable"},
@@ -174,6 +192,14 @@ const I18N = {
     }
   },
   es: {
+    modes:{quick:"Diario de bordo",full:"Workbench completo"},
+    modeHintQuick:"Modo rápido: marque acciones ejecutadas y el sistema registra automáticamente el historial. Añada notas rápidas solo cuando sea necesario.",
+    modeHintFull:"Modo completo: checklist + evidencias + entidades + relaciones + timeline + hallazgos.",
+    stages:{direction:"1 · Dirección",collection:"2 · Recolección",synthesis:"3 · Corroboración y síntesis",decision:"4 · Análisis y decisión",closure:"5 · Entrega y aprendizaje"},
+    logbookHeading:"Diario de bordo",logbookIntro:"Historial cronológico de la actividad del caso. Los cambios del checklist se registran automáticamente.",
+    logbookNote:"Nota rápida",logbookNotePh:"Registre una observación general sin abrir cada elemento del checklist.",addLogbookNote:"Añadir nota",exportLogbook:"Exportar diario",
+    logbookEmpty:"No hay actividad registrada.",logActions:{task:"Checklist",note:"Nota",evidence:"Evidencia",entity:"Entidad",relationship:"Relación",timeline:"Timeline",finding:"Hallazgo"},
+
     subtitle:"Workbench local-first para conducir, documentar, correlacionar y revisar investigaciones OSINT.",
     language:"Idioma", privacyTitle:"Los datos del caso permanecen en este navegador hasta que los exporte.",
     caseKicker:"CONTROL DEL CASO", case:"Caso", reset:"Limpiar", caseRef:"Referencia del caso",
@@ -187,7 +213,7 @@ const I18N = {
     bundleKicker:"PAQUETE DEL CASO", export:"Exportar & backup", exportBundle:"Exportar paquete del caso",
     importBundle:"Importar paquete del caso", exportMd:"Exportar informe Markdown", print:"Imprimir / guardar PDF",
     insights:"Insights del proceso", exportHint:"El paquete JSON contiene el checklist y los registros del workbench. Trátelo como dato del caso.",
-    tabs:{checklist:"Checklist",evidence:"Evidencias",entities:"Entidades & relaciones",timeline:"Timeline",findings:"Hallazgos"},
+    tabs:{checklist:"Checklist",evidence:"Evidencias",entities:"Entidades & relaciones",timeline:"Timeline",findings:"Hallazgos",logbook:"Diario"},
     checklist:"Checklist", searchPh:"Filtrar tareas...", core:"NÚCLEO", contextual:"CONTEXTUAL",
     legendCore:"Etapa núcleo", legendContext:"Etapa contextual", legendCaveat:"✓ ejecutar ≠ confirmar hipótesis",
     status:{all:"Todos los estados",todo:"No iniciado",doing:"En curso",done:"Completado",na:"No aplicable"},
@@ -264,14 +290,16 @@ function normalizeState(raw){
   const base=EMPTY_STATE();
   if(!raw || typeof raw!=="object") return base;
   return {
-    schemaVersion:2,
+    schemaVersion:3,
     meta:{...base.meta,...(raw.meta||{})},
     tasks:raw.tasks && typeof raw.tasks==="object" ? raw.tasks : {},
     evidence:Array.isArray(raw.evidence)?raw.evidence:[],
     entities:Array.isArray(raw.entities)?raw.entities:[],
     relationships:Array.isArray(raw.relationships)?raw.relationships:[],
     timeline:Array.isArray(raw.timeline)?raw.timeline:[],
-    findings:Array.isArray(raw.findings)?raw.findings:[]
+    findings:Array.isArray(raw.findings)?raw.findings:[],
+    logbook:Array.isArray(raw.logbook)?raw.logbook:[],
+    uiMode:raw.uiMode==="quick"?"quick":"full"
   };
 }
 function loadState(){
@@ -354,7 +382,7 @@ function setText(){
   $("contextLabel").textContent=x.context;$("context").placeholder=x.contextPh;$("privacyNotice").innerHTML=x.privacyNotice;
   $("progressKicker").textContent=x.progressKicker;$("progressHeading").textContent=x.progress;$("caseBundleKicker").textContent=x.bundleKicker;$("exportHeading").textContent=x.export;
   $("exportBundleBtn").textContent=x.exportBundle;$("importBundleBtn").textContent=x.importBundle;$("exportMdBtn").textContent=x.exportMd;$("printBtn").textContent=x.print;$("insightsBtn").textContent=x.insights;$("exportHint").textContent=x.exportHint;
-  $("tabChecklist").textContent=x.tabs.checklist;$("tabEvidence").textContent=x.tabs.evidence;$("tabEntities").textContent=x.tabs.entities;$("tabTimeline").textContent=x.tabs.timeline;$("tabFindings").textContent=x.tabs.findings;
+  $("tabChecklist").textContent=x.tabs.checklist;$("tabEvidence").textContent=x.tabs.evidence;$("tabEntities").textContent=x.tabs.entities;$("tabTimeline").textContent=x.tabs.timeline;$("tabFindings").textContent=x.tabs.findings;$("tabLogbook").textContent=x.tabs.logbook;
   $("checklistHeading").textContent=x.checklist;$("search").placeholder=x.searchPh;$("legendCore").textContent=x.legendCore;$("legendContext").textContent=x.legendContext;$("legendCaveat").textContent=x.legendCaveat;
   $("evidenceHeading").textContent=x.evidenceHeading;$("evidenceIntro").textContent=x.evidenceIntro;$("toggleEvidenceFormBtn").textContent=x.evidenceButton;
   $("evidenceTitleLabel").textContent=x.title;$("evidenceTypeLabel").textContent=x.sourceType;$("evidenceObservedLabel").textContent=x.observedAt;$("evidenceSourceLabel").textContent=x.sourceRef;
@@ -368,6 +396,7 @@ function setText(){
   $("timelineTitleLabel").textContent=x.eventTitle;$("timelineEntityLabel").textContent=x.entityIds;$("timelineEvidenceLabel").textContent=x.evidenceIds;$("timelineDescriptionLabel").textContent=x.description;$("saveTimelineBtn").textContent=x.saveEvent;$("cancelTimelineBtn").textContent=x.cancel;
   $("findingsHeading").textContent=x.findingsHeading;$("findingsIntro").textContent=x.findingsIntro;$("toggleFindingFormBtn").textContent=x.findingButton;$("findingTypeLabel").textContent=x.findingType;$("findingConfidenceLabel").textContent=x.confidence;
   $("findingStatementLabel").textContent=x.statement;$("findingEvidenceLabel").textContent=x.evidenceIds;$("findingEntityLabel").textContent=x.entityIds;$("findingAlternativeLabel").textContent=x.alternative;$("findingCaveatLabel").textContent=x.caveat;$("saveFindingBtn").textContent=x.saveFinding;$("cancelFindingBtn").textContent=x.cancel;
+  $("logbookHeading").textContent=x.logbookHeading;$("logbookIntro").textContent=x.logbookIntro;$("logbookNoteLabel").textContent=x.logbookNote;$("logbookNote").placeholder=x.logbookNotePh;$("addLogbookNoteBtn").textContent=x.addLogbookNote;$("exportLogbookBtn").textContent=x.exportLogbook;
   $("insightsHeading").textContent=x.insightsHeading;$("closeInsightsBtn").textContent=x.close;$("footerCaveat").textContent=x.footer;
 
   fillSelect($("profile"),x.profiles,state.meta.profile);fillSelect($("urgency"),x.urgencies,state.meta.urgency);fillSelect($("statusFilter"),x.status,$("statusFilter").value||"all");
@@ -385,9 +414,40 @@ function bindMeta(){
   }
 }
 function switchTab(name){
+  if(state.uiMode==="quick" && !["checklist","logbook"].includes(name)) name="checklist";
   activeTab=name;
   document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));
   document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.dataset.panel===name));
+}
+function applyMode(){
+  const quick=state.uiMode==="quick";
+  document.body.dataset.mode=quick?"quick":"full";
+  $("modeQuickBtn").classList.toggle("active",quick);
+  $("modeFullBtn").classList.toggle("active",!quick);
+  $("modeQuickBtn").textContent=tx().modes.quick;
+  $("modeFullBtn").textContent=tx().modes.full;
+  $("modeHint").textContent=quick?tx().modeHintQuick:tx().modeHintFull;
+  for(const id of ["tabEvidence","tabEntities","tabTimeline","tabFindings"]) $(id).hidden=quick;
+  if(quick && !["checklist","logbook"].includes(activeTab)) switchTab("checklist");
+}
+function setMode(mode){
+  state.uiMode=mode==="quick"?"quick":"full";
+  saveState();
+  applyMode();
+  renderChecklist();
+}
+function appendLog(type,label,ref="",detail=""){
+  const id=nextId("LG",state.logbook);
+  state.logbook.push({id,at:new Date().toISOString(),type,label,ref,detail});
+}
+function updateTaskStatus(item,newStatus){
+  const s=taskState(item.id);
+  const previous=s.status;
+  if(previous===newStatus) return;
+  s.status=newStatus;
+  appendLog("task",item.title,item.id,previous+" → "+newStatus);
+  saveState();
+  renderLogbook();
 }
 function renderStats(){
   if(!model) return;
@@ -401,7 +461,8 @@ function renderStats(){
     [x.stats.evidence,state.evidence.length],
     [x.stats.entities,state.entities.length],
     [x.stats.timeline,state.timeline.length],
-    [x.stats.findings,state.findings.length]
+    [x.stats.findings,state.findings.length],
+    [x.tabs.logbook,state.logbook.length]
   ];
   $("caseStats").innerHTML=stats.map(([l,v])=>`<div class="stat-card"><strong>${escapeHtml(v)}</strong><span>${escapeHtml(l)}</span></div>`).join("");
 }
@@ -418,7 +479,7 @@ function updateProgress(){
   }).join("");
 }
 function renderChecklist(){
-  const root=$("checklist");root.innerHTML="";let visible=0;const x=tx();const q=$("search").value.trim().toLowerCase();const sf=$("statusFilter").value;
+  const root=$("checklist");root.innerHTML="";let visible=0;let lastStage=null;const x=tx();const q=$("search").value.trim().toLowerCase();const sf=$("statusFilter").value;
   for(const phase of model.phases){
     const applicable=phase.items.filter(isApplicable);
     const rows=applicable.filter(item=>{
@@ -427,6 +488,13 @@ function renderChecklist(){
       return (!q||hay.includes(q))&&(sf==="all"||s.status===sf);
     });
     if(!rows.length)continue;visible+=rows.length;
+    if(phase.stage && phase.stage!==lastStage){
+      const divider=document.createElement("div");
+      divider.className="stage-divider";
+      divider.innerHTML=`<span>${escapeHtml(x.stages[phase.stage]||phase.stage)}</span>`;
+      root.appendChild(divider);
+      lastStage=phase.stage;
+    }
     const sec=document.createElement("section");sec.className="phase";
     const d=applicable.filter(i=>taskState(i.id).status==="done").length;const n=applicable.filter(i=>taskState(i.id).status!=="na").length;
     sec.innerHTML=`<div class="phase-header"><div><h3>${escapeHtml(phase.title)}</h3><div class="small muted">${escapeHtml(phase.description)}</div></div><div class="phase-meta">${d} / ${n} ${escapeHtml(x.completed)}</div></div>`;
@@ -434,11 +502,11 @@ function renderChecklist(){
     for(const item of rows){
       const s=taskState(item.id);const row=document.createElement("article");row.className="task"+(s.status==="done"?" task-done":"");
       const check=document.createElement("input");check.type="checkbox";check.className="task-check";check.checked=s.status==="done";check.setAttribute("aria-label",x.markDone+": "+item.title);
-      check.onchange=()=>{s.status=check.checked?"done":"todo";saveState();renderChecklist();};
+      check.onchange=()=>{updateTaskStatus(item,check.checked?"done":"todo");renderChecklist();};
       const body=document.createElement("div");body.innerHTML=`<div class="task-id">${escapeHtml(item.id)}</div><div class="task-title">${escapeHtml(item.title)}</div><div class="task-desc">${escapeHtml(item.description)}</div><div class="badges"><span class="badge ${item.core?"core":""}">${item.core?x.core:x.contextual}</span></div>`;
       const status=document.createElement("select");status.className="task-status";
       for(const k of ["todo","doing","done","na"]){const o=document.createElement("option");o.value=k;o.textContent=x.status[k];status.appendChild(o);}status.value=s.status;
-      status.onchange=()=>{s.status=status.value;saveState();renderChecklist();};
+      status.onchange=()=>{updateTaskStatus(item,status.value);renderChecklist();};
       const details=document.createElement("div");details.className="task-details";
       const nl=document.createElement("label");nl.textContent=x.note;const note=document.createElement("textarea");note.rows=2;note.placeholder=x.notePh;note.value=s.note||"";note.oninput=()=>{s.note=note.value;saveState();};nl.appendChild(note);
       const sl=document.createElement("label");sl.textContent=x.source;const src=document.createElement("input");src.placeholder=x.sourcePh;src.value=s.source||"";src.oninput=()=>{s.source=src.value;saveState();};sl.appendChild(src);
@@ -481,6 +549,35 @@ function renderEvidence(){
       ${e.notes?`<p>${escapeHtml(e.notes)}</p>`:""}
     </article>`).join(""):`<div class="empty">${escapeHtml(x.evidenceEmpty)}</div>`;
 }
+function renderLogbook(){
+  const x=tx();
+  const sorted=[...state.logbook].sort((a,b)=>String(b.at).localeCompare(String(a.at)));
+  $("logbookList").innerHTML=sorted.length?sorted.map(entry=>`
+    <article class="timeline-event">
+      <div class="timeline-marker"></div>
+      <div class="timeline-card log-entry">
+        <div class="record-head"><div><span class="record-id">${escapeHtml(entry.id)}</span><h3>${escapeHtml(x.logActions[entry.type]||entry.type)} · ${escapeHtml(entry.label||"")}</h3></div><span class="small muted">${escapeHtml(fmtDate(entry.at))}</span></div>
+        ${entry.ref?`<div class="record-meta"><span>${escapeHtml(entry.ref)}</span></div>`:""}
+        ${entry.detail?`<p>${escapeHtml(entry.detail)}</p>`:""}
+      </div>
+    </article>`).join(""):`<div class="empty">${escapeHtml(x.logbookEmpty)}</div>`;
+}
+function addLogbookNote(ev){
+  ev.preventDefault();
+  const note=$("logbookNote").value.trim();
+  if(!note) return;
+  appendLog("note",tx().logbookNote,"",note);
+  $("logbookNote").value="";
+  saveState();renderLogbook();
+}
+function exportLogbook(){
+  const lines=["# "+tx().logbookHeading,"",state.meta.caseRef?("**"+tx().caseRef+":** "+state.meta.caseRef):"", ""];
+  for(const e of [...state.logbook].sort((a,b)=>String(a.at).localeCompare(String(b.at)))){
+    lines.push("- **"+fmtDate(e.at)+"** · "+(tx().logActions[e.type]||e.type)+(e.ref?" · "+e.ref:"")+" · "+e.label+(e.detail?" — "+e.detail:""));
+  }
+  download(safeName(state.meta.caseRef)+"-logbook-"+currentLang+".md",lines.filter(Boolean).join("\n"),"text/markdown;charset=utf-8");
+}
+
 function resetEvidenceForm(){
   $("evidenceForm").reset();$("evidenceEditId").value="";fillSelect($("evidenceType"),tx().sourceTypes,"web");fillSelect($("evidenceReliability"),tx().reliabilities,"NA");fillSelect($("evidenceCredibility"),tx().credibilities,"NA");populateTaskSelect("");
 }
@@ -493,6 +590,7 @@ function saveEvidenceForm(ev){
   ev.preventDefault();const id=$("evidenceEditId").value||nextId("EV",state.evidence);
   const rec={id,title:$("evidenceTitle").value.trim(),type:$("evidenceType").value,observedAt:$("evidenceObservedAt").value,sourceRef:$("evidenceSourceRef").value.trim(),reliability:$("evidenceReliability").value,credibility:$("evidenceCredibility").value,taskId:$("evidenceTaskId").value,hash:$("evidenceHash").value.trim(),notes:$("evidenceNotes").value.trim(),updatedAt:new Date().toISOString()};
   const idx=state.evidence.findIndex(x=>x.id===id);if(idx>=0)state.evidence[idx]=rec;else state.evidence.push(rec);
+  appendLog("evidence",rec.title,rec.id,idx>=0?"updated":"created");
   saveState();resetEvidenceForm();$("evidenceForm").classList.add("hidden");renderEvidence();renderFindings();renderTimeline();renderRelationships();
 }
 function openEvidenceForTask(taskId,title){
@@ -512,7 +610,7 @@ function renderEntities(){
 function resetEntityForm(){$("entityForm").reset();$("entityEditId").value="";fillSelect($("entityType"),tx().entityTypes,"person");}
 function saveEntityForm(ev){
   ev.preventDefault();const id=$("entityEditId").value||nextId("EN",state.entities);const rec={id,label:$("entityLabel").value.trim(),type:$("entityType").value,aliases:$("entityAliases").value.trim(),notes:$("entityNotes").value.trim()};
-  const idx=state.entities.findIndex(x=>x.id===id);if(idx>=0)state.entities[idx]=rec;else state.entities.push(rec);saveState();resetEntityForm();$("entityForm").classList.add("hidden");renderEntities();renderTimeline();renderFindings();
+  const idx=state.entities.findIndex(x=>x.id===id);if(idx>=0)state.entities[idx]=rec;else state.entities.push(rec);appendLog("entity",rec.label,rec.id,idx>=0?"updated":"created");saveState();resetEntityForm();$("entityForm").classList.add("hidden");renderEntities();renderTimeline();renderFindings();
 }
 function editEntity(id){const e=state.entities.find(x=>x.id===id);if(!e)return;$("entityForm").classList.remove("hidden");$("entityEditId").value=e.id;$("entityLabel").value=e.label;$("entityType").value=e.type;$("entityAliases").value=e.aliases||"";$("entityNotes").value=e.notes||"";}
 function deleteEntity(id){if(!confirm(tx().confirmDelete))return;state.entities=state.entities.filter(e=>e.id!==id);state.relationships=state.relationships.filter(r=>r.from!==id&&r.to!==id);saveState();renderEntities();renderTimeline();renderFindings();}
@@ -528,7 +626,7 @@ function resetRelationshipForm(){$("relationshipForm").reset();$("relationshipEd
 function saveRelationshipForm(ev){
   ev.preventDefault();if(!$("relationshipFrom").value||!$("relationshipTo").value)return;
   const id=$("relationshipEditId").value||nextId("RL",state.relationships);const rec={id,from:$("relationshipFrom").value,to:$("relationshipTo").value,type:$("relationshipType").value.trim(),confidence:$("relationshipConfidence").value,evidenceIds:parseIds($("relationshipEvidenceIds").value,"EV"),notes:$("relationshipNotes").value.trim()};
-  const idx=state.relationships.findIndex(x=>x.id===id);if(idx>=0)state.relationships[idx]=rec;else state.relationships.push(rec);saveState();resetRelationshipForm();$("relationshipForm").classList.add("hidden");renderRelationships();
+  const idx=state.relationships.findIndex(x=>x.id===id);if(idx>=0)state.relationships[idx]=rec;else state.relationships.push(rec);appendLog("relationship",rec.type,rec.id,idx>=0?"updated":"created");saveState();resetRelationshipForm();$("relationshipForm").classList.add("hidden");renderRelationships();
 }
 function editRelationship(id){const r=state.relationships.find(x=>x.id===id);if(!r)return;$("relationshipForm").classList.remove("hidden");$("relationshipEditId").value=r.id;populateEntitySelects();$("relationshipFrom").value=r.from;$("relationshipTo").value=r.to;$("relationshipType").value=r.type;$("relationshipConfidence").value=r.confidence||"na";$("relationshipEvidenceIds").value=(r.evidenceIds||[]).join(", ");$("relationshipNotes").value=r.notes||"";}
 function deleteRelationship(id){if(!confirm(tx().confirmDelete))return;state.relationships=state.relationships.filter(r=>r.id!==id);saveState();renderRelationships();}
@@ -545,7 +643,7 @@ function renderTimeline(){
 function resetTimelineForm(){$("timelineForm").reset();$("timelineEditId").value="";fillSelect($("timelineConfidence"),tx().confidences,"na");}
 function saveTimelineForm(ev){
   ev.preventDefault();const id=$("timelineEditId").value||nextId("TL",state.timeline);const rec={id,when:$("timelineWhen").value,title:$("timelineTitle").value.trim(),confidence:$("timelineConfidence").value,entityIds:parseIds($("timelineEntityIds").value,"EN"),evidenceIds:parseIds($("timelineEvidenceIds").value,"EV"),description:$("timelineDescription").value.trim()};
-  const idx=state.timeline.findIndex(x=>x.id===id);if(idx>=0)state.timeline[idx]=rec;else state.timeline.push(rec);saveState();resetTimelineForm();$("timelineForm").classList.add("hidden");renderTimeline();
+  const idx=state.timeline.findIndex(x=>x.id===id);if(idx>=0)state.timeline[idx]=rec;else state.timeline.push(rec);appendLog("timeline",rec.title,rec.id,idx>=0?"updated":"created");saveState();resetTimelineForm();$("timelineForm").classList.add("hidden");renderTimeline();
 }
 function editTimeline(id){const e=state.timeline.find(x=>x.id===id);if(!e)return;$("timelineForm").classList.remove("hidden");$("timelineEditId").value=e.id;$("timelineWhen").value=e.when||"";$("timelineTitle").value=e.title||"";$("timelineConfidence").value=e.confidence||"na";$("timelineEntityIds").value=(e.entityIds||[]).join(", ");$("timelineEvidenceIds").value=(e.evidenceIds||[]).join(", ");$("timelineDescription").value=e.description||"";}
 function deleteTimeline(id){if(!confirm(tx().confirmDelete))return;state.timeline=state.timeline.filter(e=>e.id!==id);saveState();renderTimeline();}
@@ -562,7 +660,7 @@ function renderFindings(){
 function resetFindingForm(){$("findingForm").reset();$("findingEditId").value="";fillSelect($("findingType"),tx().findingTypes,"observation");fillSelect($("findingConfidence"),tx().confidences,"na");}
 function saveFindingForm(ev){
   ev.preventDefault();const id=$("findingEditId").value||nextId("FD",state.findings);const rec={id,type:$("findingType").value,confidence:$("findingConfidence").value,statement:$("findingStatement").value.trim(),evidenceIds:parseIds($("findingEvidenceIds").value,"EV"),entityIds:parseIds($("findingEntityIds").value,"EN"),alternative:$("findingAlternative").value.trim(),caveat:$("findingCaveat").value.trim()};
-  const idx=state.findings.findIndex(x=>x.id===id);if(idx>=0)state.findings[idx]=rec;else state.findings.push(rec);saveState();resetFindingForm();$("findingForm").classList.add("hidden");renderFindings();
+  const idx=state.findings.findIndex(x=>x.id===id);if(idx>=0)state.findings[idx]=rec;else state.findings.push(rec);appendLog("finding",rec.statement.slice(0,100),rec.id,idx>=0?"updated":"created");saveState();resetFindingForm();$("findingForm").classList.add("hidden");renderFindings();
 }
 function editFinding(id){const f=state.findings.find(x=>x.id===id);if(!f)return;$("findingForm").classList.remove("hidden");$("findingEditId").value=f.id;$("findingType").value=f.type;$("findingConfidence").value=f.confidence||"na";$("findingStatement").value=f.statement||"";$("findingEvidenceIds").value=(f.evidenceIds||[]).join(", ");$("findingEntityIds").value=(f.entityIds||[]).join(", ");$("findingAlternative").value=f.alternative||"";$("findingCaveat").value=f.caveat||"";}
 function deleteFinding(id){if(!confirm(tx().confirmDelete))return;state.findings=state.findings.filter(f=>f.id!==id);saveState();renderFindings();}
@@ -620,7 +718,7 @@ function exportMarkdown(){download(safeName(state.meta.caseRef)+"-osint-report-"
 async function importBundle(file){
   try{
     const parsed=JSON.parse(await file.text());let incoming;
-    if(parsed.schema===SCHEMA&&parsed.state)incoming=parsed.state;
+    if((parsed.schema===SCHEMA||parsed.schema==="osintchecklist.case.v2")&&parsed.state)incoming=parsed.state;
     else if(parsed.schema==="osintchecklist.case.v1"||parsed.meta||parsed.tasks)incoming=parsed.state||parsed;
     else throw new Error("schema");
     if(!confirm(tx().importConfirm))return;
@@ -633,17 +731,20 @@ function printReport(){
   w.document.write(`<!doctype html><html lang="${currentLang}"><head><meta charset="utf-8"><title>${escapeHtml(tx().report.title)}</title><style>body{font-family:Arial,sans-serif;max-width:920px;margin:36px auto;padding:0 24px;line-height:1.5;color:#111}h1{font-size:30px}h2{margin-top:32px;border-bottom:1px solid #bbb;padding-bottom:6px}h3{margin-top:22px}.print{position:fixed;right:20px;top:20px}@media print{.print{display:none}body{margin:0;max-width:none}}</style></head><body><button class="print" onclick="window.print()">${escapeHtml(tx().report.print)}</button>${htmlBody}</body></html>`);w.document.close();
 }
 function resetCase(){if(!confirm(tx().resetConfirm))return;state=EMPTY_STATE();localStorage.removeItem(STORAGE_KEY);syncMeta();renderAll();}
-function renderAll(){setText();syncMeta();populateTaskSelect();populateEntitySelects();renderChecklist();renderEvidence();renderEntities();renderTimeline();renderFindings();renderStats();updateProgress();}
+function renderAll(){setText();syncMeta();populateTaskSelect();populateEntitySelects();renderChecklist();renderEvidence();renderEntities();renderTimeline();renderFindings();renderLogbook();renderStats();updateProgress();applyMode();}
 async function setLanguage(lang){if(!I18N[lang])lang="en";currentLang=lang;localStorage.setItem(LANG_KEY,lang);model=await loadLocalizedModel(lang);renderAll();}
 
 function bind(){
   bindMeta();
   document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>switchTab(b.dataset.tab)));
+  $("modeQuickBtn").addEventListener("click",()=>setMode("quick"));
+  $("modeFullBtn").addEventListener("click",()=>setMode("full"));
   $("languageSelect").addEventListener("change",()=>setLanguage($("languageSelect").value));
   $("search").addEventListener("input",renderChecklist);$("statusFilter").addEventListener("change",renderChecklist);
   $("resetBtn").addEventListener("click",resetCase);$("exportBundleBtn").addEventListener("click",exportBundle);$("importBundleBtn").addEventListener("click",()=>$("importBundleInput").click());
   $("importBundleInput").addEventListener("change",e=>{if(e.target.files?.[0])importBundle(e.target.files[0]);e.target.value="";});
   $("exportMdBtn").addEventListener("click",exportMarkdown);$("printBtn").addEventListener("click",printReport);$("insightsBtn").addEventListener("click",renderInsights);$("closeInsightsBtn").addEventListener("click",()=>$("insightsDialog").close());
+  $("logbookNoteForm").addEventListener("submit",addLogbookNote);$("exportLogbookBtn").addEventListener("click",exportLogbook);
 
   $("toggleEvidenceFormBtn").onclick=()=>{resetEvidenceForm();$("evidenceForm").classList.toggle("hidden");};$("cancelEvidenceBtn").onclick=()=>{$("evidenceForm").classList.add("hidden");resetEvidenceForm();};$("evidenceForm").addEventListener("submit",saveEvidenceForm);$("evidenceSearch").addEventListener("input",renderEvidence);
   $("evidenceList").addEventListener("click",e=>{const a=e.target.closest("[data-edit-evidence]");const d=e.target.closest("[data-delete-evidence]");if(a)editEvidence(a.dataset.editEvidence);if(d)deleteEvidence(d.dataset.deleteEvidence);});
