@@ -3,16 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A local-first methodological checklist for OSINT investigations.">
+  <meta name="description" content="A local-first methodological OSINT analyst workbench.">
+  <meta name="theme-color" content="#111111">
   <title>OSINT Checklist // Analyst Workbench</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <header class="topbar">
     <div>
-      <p class="eyebrow">OSINT CHECKLIST</p>
+      <div class="brand-line">
+        <p class="eyebrow">OSINT CHECKLIST</p>
+        <span class="version-badge">v0.2</span>
+      </div>
       <h1>Analyst Workbench</h1>
-      <p id="subtitle" class="subtitle">A traceable, local-first methodological checklist for open-source investigations.</p>
+      <p id="subtitle" class="subtitle"></p>
     </div>
     <div class="topbar-actions">
       <label class="language-control">
@@ -23,9 +27,7 @@
           <option value="es">Español</option>
         </select>
       </label>
-      <div id="privacyPill" class="privacy-pill" title="Case content stays in this browser's local storage.">
-        LOCAL-FIRST
-      </div>
+      <div id="privacyPill" class="privacy-pill">LOCAL-FIRST</div>
     </div>
   </header>
 
@@ -33,7 +35,10 @@
     <aside class="sidebar">
       <section class="panel">
         <div class="section-heading">
-          <h2 id="caseHeading">Case</h2>
+          <div>
+            <p class="panel-kicker" id="caseKicker">CASE CONTROL</p>
+            <h2 id="caseHeading">Case</h2>
+          </div>
           <button id="resetBtn" class="ghost danger" type="button">Reset</button>
         </div>
 
@@ -77,6 +82,7 @@
       </section>
 
       <section class="panel">
+        <p class="panel-kicker" id="progressKicker">CASE HEALTH</p>
         <h2 id="progressHeading">Progress</h2>
         <div class="progress-wrap">
           <div class="progress-track"><div id="overallBar" class="progress-bar"></div></div>
@@ -89,9 +95,12 @@
       </section>
 
       <section class="panel">
-        <h2 id="exportHeading">Export</h2>
+        <p class="panel-kicker" id="caseBundleKicker">CASE BUNDLE</p>
+        <h2 id="exportHeading">Export & backup</h2>
         <div class="button-stack">
-          <button id="exportJsonBtn" type="button">Export JSON state</button>
+          <button id="exportBundleBtn" type="button">Export case bundle</button>
+          <button id="importBundleBtn" class="secondary" type="button">Import case bundle</button>
+          <input id="importBundleInput" class="sr-only" type="file" accept=".json,application/json">
           <button id="exportMdBtn" type="button">Export Markdown report</button>
           <button id="printBtn" type="button">Print / save PDF</button>
           <button id="insightsBtn" class="secondary" type="button">Process insights</button>
@@ -101,27 +110,188 @@
     </aside>
 
     <section class="workspace">
-      <div class="workspace-toolbar">
-        <div>
-          <p class="eyebrow">INVESTIGATION FLOW</p>
-          <h2 id="checklistHeading">Checklist</h2>
-        </div>
-        <div class="toolbar-actions">
-          <label class="search-label">
-            <span id="searchSr" class="sr-only">Filter checklist</span>
-            <input id="search" type="search">
-          </label>
-          <select id="statusFilter" aria-label="Status filter"></select>
-        </div>
+      <div class="workspace-head">
+        <div class="case-stats" id="caseStats"></div>
+        <nav class="tabs" aria-label="Workbench sections">
+          <button class="tab active" type="button" data-tab="checklist" id="tabChecklist">Checklist</button>
+          <button class="tab" type="button" data-tab="evidence" id="tabEvidence">Evidence</button>
+          <button class="tab" type="button" data-tab="entities" id="tabEntities">Entities & relationships</button>
+          <button class="tab" type="button" data-tab="timeline" id="tabTimeline">Timeline</button>
+          <button class="tab" type="button" data-tab="findings" id="tabFindings">Findings</button>
+        </nav>
       </div>
 
-      <div class="legend">
-        <span><i class="dot core"></i> <span id="legendCore">Core step</span></span>
-        <span><i class="dot scenario"></i> <span id="legendContext">Contextual step</span></span>
-        <span id="legendCaveat">✓ execution recorded ≠ hypothesis confirmed</span>
-      </div>
+      <section class="tab-panel active" data-panel="checklist">
+        <div class="workspace-toolbar">
+          <div>
+            <p class="eyebrow">INVESTIGATION FLOW</p>
+            <h2 id="checklistHeading">Checklist</h2>
+          </div>
+          <div class="toolbar-actions">
+            <label class="search-label">
+              <span id="searchSr" class="sr-only">Filter checklist</span>
+              <input id="search" type="search">
+            </label>
+            <select id="statusFilter" aria-label="Status filter"></select>
+          </div>
+        </div>
 
-      <div id="checklist" class="checklist" aria-live="polite"></div>
+        <div class="legend">
+          <span><i class="dot core"></i> <span id="legendCore">Core step</span></span>
+          <span><i class="dot scenario"></i> <span id="legendContext">Contextual step</span></span>
+          <span id="legendCaveat"></span>
+        </div>
+
+        <div id="checklist" class="checklist" aria-live="polite"></div>
+      </section>
+
+      <section class="tab-panel" data-panel="evidence">
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">EVIDENCE REGISTER</p>
+            <h2 id="evidenceHeading">Evidence</h2>
+            <p id="evidenceIntro" class="muted"></p>
+          </div>
+          <button id="toggleEvidenceFormBtn" type="button">+ Evidence</button>
+        </div>
+
+        <form id="evidenceForm" class="record-form hidden">
+          <input id="evidenceEditId" type="hidden">
+          <div class="form-grid">
+            <label class="span-2"><span id="evidenceTitleLabel">Title</span><input id="evidenceTitle" required></label>
+            <label><span id="evidenceTypeLabel">Source type</span><select id="evidenceType"></select></label>
+            <label><span id="evidenceObservedLabel">Observed at</span><input id="evidenceObservedAt" type="datetime-local"></label>
+            <label class="span-2"><span id="evidenceSourceLabel">URL / source reference</span><input id="evidenceSourceRef" type="text"></label>
+            <label><span id="evidenceReliabilityLabel">Source reliability</span><select id="evidenceReliability"></select></label>
+            <label><span id="evidenceCredibilityLabel">Information credibility</span><select id="evidenceCredibility"></select></label>
+            <label><span id="evidenceTaskLabel">Checklist task</span><select id="evidenceTaskId"></select></label>
+            <label><span id="evidenceHashLabel">Hash / integrity reference</span><input id="evidenceHash" type="text"></label>
+            <label class="span-2"><span id="evidenceNotesLabel">Notes</span><textarea id="evidenceNotes" rows="3"></textarea></label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="saveEvidenceBtn">Save evidence</button>
+            <button type="button" class="secondary" id="cancelEvidenceBtn">Cancel</button>
+          </div>
+          <div class="scale-help" id="sourceScaleHelp"></div>
+        </form>
+
+        <div class="module-tools">
+          <input id="evidenceSearch" type="search">
+          <span id="evidenceCount" class="count-label"></span>
+        </div>
+        <div id="evidenceList" class="record-list"></div>
+      </section>
+
+      <section class="tab-panel" data-panel="entities">
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">ENTITY MAP</p>
+            <h2 id="entitiesHeading">Entities & relationships</h2>
+            <p id="entitiesIntro" class="muted"></p>
+          </div>
+        </div>
+
+        <div class="split-modules">
+          <div class="submodule">
+            <div class="submodule-head">
+              <h3 id="entityRegisterHeading">Entities</h3>
+              <button id="toggleEntityFormBtn" type="button">+ Entity</button>
+            </div>
+            <form id="entityForm" class="record-form hidden compact">
+              <input id="entityEditId" type="hidden">
+              <label><span id="entityLabelLabel">Label</span><input id="entityLabel" required></label>
+              <label><span id="entityTypeLabel">Type</span><select id="entityType"></select></label>
+              <label><span id="entityAliasesLabel">Aliases / known identifiers</span><input id="entityAliases"></label>
+              <label><span id="entityNotesLabel">Notes</span><textarea id="entityNotes" rows="3"></textarea></label>
+              <div class="form-actions">
+                <button type="submit" id="saveEntityBtn">Save entity</button>
+                <button type="button" class="secondary" id="cancelEntityBtn">Cancel</button>
+              </div>
+            </form>
+            <div id="entityList" class="record-list"></div>
+          </div>
+
+          <div class="submodule">
+            <div class="submodule-head">
+              <h3 id="relationshipHeading">Relationships</h3>
+              <button id="toggleRelationshipFormBtn" type="button">+ Relationship</button>
+            </div>
+            <form id="relationshipForm" class="record-form hidden compact">
+              <input id="relationshipEditId" type="hidden">
+              <label><span id="relationshipFromLabel">From</span><select id="relationshipFrom" required></select></label>
+              <label><span id="relationshipTypeLabel">Relationship type</span><input id="relationshipType" required></label>
+              <label><span id="relationshipToLabel">To</span><select id="relationshipTo" required></select></label>
+              <label><span id="relationshipConfidenceLabel">Confidence</span><select id="relationshipConfidence"></select></label>
+              <label><span id="relationshipEvidenceLabel">Evidence IDs</span><input id="relationshipEvidenceIds"></label>
+              <label><span id="relationshipNotesLabel">Notes</span><textarea id="relationshipNotes" rows="3"></textarea></label>
+              <div class="form-actions">
+                <button type="submit" id="saveRelationshipBtn">Save relationship</button>
+                <button type="button" class="secondary" id="cancelRelationshipBtn">Cancel</button>
+              </div>
+            </form>
+            <div id="relationshipList" class="record-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="timeline">
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">CHRONOLOGY</p>
+            <h2 id="timelineHeading">Timeline</h2>
+            <p id="timelineIntro" class="muted"></p>
+          </div>
+          <button id="toggleTimelineFormBtn" type="button">+ Event</button>
+        </div>
+
+        <form id="timelineForm" class="record-form hidden">
+          <input id="timelineEditId" type="hidden">
+          <div class="form-grid">
+            <label><span id="timelineWhenLabel">Date / time</span><input id="timelineWhen" type="datetime-local" required></label>
+            <label><span id="timelineConfidenceLabel">Confidence</span><select id="timelineConfidence"></select></label>
+            <label class="span-2"><span id="timelineTitleLabel">Event title</span><input id="timelineTitle" required></label>
+            <label><span id="timelineEntityLabel">Entity IDs</span><input id="timelineEntityIds"></label>
+            <label><span id="timelineEvidenceLabel">Evidence IDs</span><input id="timelineEvidenceIds"></label>
+            <label class="span-2"><span id="timelineDescriptionLabel">Description</span><textarea id="timelineDescription" rows="3"></textarea></label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="saveTimelineBtn">Save event</button>
+            <button type="button" class="secondary" id="cancelTimelineBtn">Cancel</button>
+          </div>
+        </form>
+
+        <div id="timelineList" class="timeline-list"></div>
+      </section>
+
+      <section class="tab-panel" data-panel="findings">
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">ANALYTIC OUTPUT</p>
+            <h2 id="findingsHeading">Findings</h2>
+            <p id="findingsIntro" class="muted"></p>
+          </div>
+          <button id="toggleFindingFormBtn" type="button">+ Finding</button>
+        </div>
+
+        <form id="findingForm" class="record-form hidden">
+          <input id="findingEditId" type="hidden">
+          <div class="form-grid">
+            <label><span id="findingTypeLabel">Type</span><select id="findingType"></select></label>
+            <label><span id="findingConfidenceLabel">Confidence</span><select id="findingConfidence"></select></label>
+            <label class="span-2"><span id="findingStatementLabel">Statement</span><textarea id="findingStatement" rows="3" required></textarea></label>
+            <label><span id="findingEvidenceLabel">Evidence IDs</span><input id="findingEvidenceIds"></label>
+            <label><span id="findingEntityLabel">Entity IDs</span><input id="findingEntityIds"></label>
+            <label class="span-2"><span id="findingAlternativeLabel">Alternative explanation</span><textarea id="findingAlternative" rows="2"></textarea></label>
+            <label class="span-2"><span id="findingCaveatLabel">Caveat / information gap</span><textarea id="findingCaveat" rows="2"></textarea></label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="saveFindingBtn">Save finding</button>
+            <button type="button" class="secondary" id="cancelFindingBtn">Cancel</button>
+          </div>
+        </form>
+
+        <div id="findingList" class="record-list"></div>
+      </section>
     </section>
   </main>
 
@@ -136,8 +306,19 @@
     <div id="insightsContent"></div>
   </dialog>
 
+  <dialog id="confirmDialog">
+    <div class="dialog-head">
+      <h2 id="confirmTitle">Confirm</h2>
+    </div>
+    <p id="confirmText"></p>
+    <div class="form-actions">
+      <button id="confirmYesBtn" type="button">Confirm</button>
+      <button id="confirmNoBtn" class="secondary" type="button">Cancel</button>
+    </div>
+  </dialog>
+
   <footer>
-    <span>OSINT Checklist // Analyst Workbench</span>
+    <span>OSINT Checklist // Analyst Workbench v0.2</span>
     <span id="footerCaveat"></span>
   </footer>
 
