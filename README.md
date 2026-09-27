@@ -1,5 +1,7 @@
 # OSINT Checklist // Analyst Workbench
 
+> **v0.3 · Method & Logbook** — 143 checagens · 20 fases · 5 macroetapas · modo rápido + workbench completo
+
 **Interface languages:** 🇧🇷 Português (Brasil) · 🇺🇸 English · 🇪🇸 Español
 
 The interface auto-detects the browser language, allows manual switching, and keeps the language preference locally. Checklist content, task statuses, process insights, Markdown exports and printable/PDF reports are localized.
@@ -14,11 +16,11 @@ Instead of another directory containing hundreds of OSINT tools, this project fo
 
 > Data is stored locally in the browser by default. Do not record unnecessary personal data, credentials, secrets, or information you are not authorized to process.
 
-## v0.2 — Analyst Workbench
+## v0.3 — Method & Logbook
 
-The checklist is still the center of the product, but a case can now contain structured **Evidence, Entities, Relationships, Timeline events and Findings**. These objects are linked by stable IDs and remain in browser storage until explicitly exported.
+The checklist remains the center of the product. v0.3 adds a decision-oriented method, a reduced **Quick Log / Diário de Bordo** mode, automatic activity logging and a GitHub handbook that teaches every checklist item. The full workbench still supports structured **Evidence, Entities, Relationships, Timeline events and Findings**.
 
-### New in v0.2
+### New in v0.3
 
 - Evidence register with source type, observation time, source reliability, information credibility, hash/reference and checklist linkage
 - Entity register and typed relationship matrix
@@ -27,10 +29,15 @@ The checklist is still the center of the product, but a case can now contain str
 - Case health dashboard and cross-reference quality checks
 - Full case bundle export/import in JSON
 - Automatic migration of existing v0.1 browser state
-- Reports now include structured evidence, entities, relationships, timeline, findings and open core steps
+- Reports include structured evidence, entities, relationships, timeline, findings and open core steps
+- **143 methodological checks** organized into **20 phases and 5 decision stages**
+- **Quick Log / Diário de Bordo mode**: checking actions automatically builds a timestamped investigation log
+- **Full Workbench mode** remains available for evidence-heavy cases
+- **20 playbook chapters** teach every checklist item with execution guidance, completion criteria, common failure modes and decision questions
+- Course-ready learning map and reusable templates for collection planning, hypotheses, decision gates and logbooks
 - Interface remains available in **pt-BR, English and Spanish**
 
-See [Case Schema](docs/CASE-SCHEMA.md) and [Source Evaluation](docs/SOURCE-EVALUATION.md).
+Start with [OSINT Analyst Playbooks](docs/PLAYBOOKS.md), [Analyst Decision Flow](docs/ANALYST-DECISION-FLOW.md), [Quick Log Mode](docs/LOGBOOK-MODE.md) and [Course Map](docs/COURSE-MAP.md). For the data model, see [Case Schema](docs/CASE-SCHEMA.md) and [Source Evaluation](docs/SOURCE-EVALUATION.md).
 
 ## What it does
 
@@ -77,7 +84,11 @@ This repository is intentionally deployable as a static site.
 
 > Opening `index.html` directly with `file://` may prevent the browser from loading `data/checklist.json` because of local-file security rules.
 
-## Investigation phases
+## Investigation method
+
+The workflow is intentionally ordered toward a decision:
+
+**Direction → Collection → Corroboration & Synthesis → Analysis & Decision → Delivery & Learning**
 
 The default checklist covers:
 
@@ -98,6 +109,20 @@ The default checklist covers:
 - Evidence preservation
 - Analysis, confidence and alternatives
 - Reporting, review and closure
+- Post-case learning and monitoring
+
+## Documentation handbook
+
+The web app is operational; the GitHub documentation is the **teaching layer**.
+
+- [Playbooks — every checklist item](docs/PLAYBOOKS.md)
+- [Decision-oriented analyst flow](docs/ANALYST-DECISION-FLOW.md)
+- [Quick Log / Diário de Bordo](docs/LOGBOOK-MODE.md)
+- [Course-ready learning map](docs/COURSE-MAP.md)
+- [Collection Plan template](docs/templates/COLLECTION-PLAN.md)
+- [Hypothesis Matrix template](docs/templates/HYPOTHESIS-MATRIX.md)
+- [Decision Gate template](docs/templates/DECISION-GATE.md)
+- [Investigation Logbook template](docs/templates/LOGBOOK.md)
 
 ## Architecture
 
@@ -172,7 +197,7 @@ See [Privacy & data handling](docs/PRIVACY.md).
 - [x] v0.1 → v0.2 local-state migration
 - [x] Cross-reference process insights
 
-### v0.3 — Optional assisted analysis
+### v0.4 — Optional assisted analysis
 - [ ] Explicit opt-in AI provider integration
 - [ ] User-supplied API configuration stored locally
 - [ ] Summarization only from analyst-selected evidence
